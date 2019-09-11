@@ -3,12 +3,9 @@
 /**
  * Module dependencies.
  */
-const browserSync = require('browser-sync')
-
 const app = require('../app');
 const debug = require('debug')('nodejs-get-started:server');
 const http = require('http');
-const http2 = require('http2');
 
 /**
  * Get port from environment and store in Express.

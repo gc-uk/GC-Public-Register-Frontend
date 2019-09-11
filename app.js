@@ -1,29 +1,43 @@
-const express = require('express');
-const path = require('path');
-const favicon = require('serve-favicon');
-const cookieParser = require('cookie-parser');
-const bodyParser = require('body-parser');
-const nunjucks = require('nunjucks');
-const dateFilter = require('nunjucks-date-filter');
-const markdown = require('nunjucks-markdown');
-const marked = require('marked');
-const sessionInMemory = require('express-session');
-const routes = require('./routes/routes');
-const utils = require('./utils.js');
-const app = express();
+var express = require('express');
+var path = require('path');
+var favicon = require('serve-favicon');
+var cookieParser = require('cookie-parser');
+var bodyParser = require('body-parser');
+var nunjucks = require('nunjucks');
+var dateFilter = require('nunjucks-date-filter');
+var markdown = require('nunjucks-markdown');
+var marked = require('marked');
+var sessionInMemory = require('express-session');
+var routes = require('./routes/routes');
+const utils = require('./utils.js')
 
+const appInsights = require("applicationinsights");
+
+
+require('dotenv').config()
+
+appInsights.setup(process.env.instrumentationkey);
+appInsights.start();
+
+var app = express();
+
+// view engine setup
 app.set('views', path.join(__dirname, 'views'));
 app.set('trust proxy', 1)
 
-const PATH_TO_TEMPLATES = path.join(__dirname, 'views');
+var PATH_TO_TEMPLATES = path.join(__dirname, 'views') ;
 
-let env = nunjucks.configure(PATH_TO_TEMPLATES, {
-  autoescape: true,
-  express: app
-});
 
-env.addFilter('date', dateFilter);
-markdown.register(env, marked);
+  let env = nunjucks.configure(PATH_TO_TEMPLATES, {
+      autoescape: true,
+      express: app
+  });
+
+  // note that 'date' is the function name you'll use in the template. As shown in nunjucks-date-filter's readme
+  env.addFilter('date', dateFilter);
+  markdown.register(env, marked);
+
+
 
 app.set('view engine', 'html');
 app.use('/public', express.static(path.join(__dirname, '/public')))
@@ -31,9 +45,7 @@ app.use('/public', express.static(path.join(__dirname, '/public')))
 // uncomment after placing your favicon in /public
 //app.use(favicon(path.join(__dirname, 'public', 'favicon.ico')));
 app.use(bodyParser.json());
-app.use(bodyParser.urlencoded({
-  extended: false
-}));
+app.use(bodyParser.urlencoded({ extended: false }));
 app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
 
@@ -57,14 +69,19 @@ utils.addCheckedFunction(env)
 
 app.use('/', routes);
 
-app.use(function (req, res, next) {
+// catch 404 and forward to error handler
+app.use(function(req, res, next) {
   var err = new Error('Not Found');
   err.status = 404;
   next(err);
 });
 
+// error handlers
+
+// development error handler
+// will print stacktrace
 if (app.get('env') === 'development') {
-  app.use(function (err, req, res, next) {
+  app.use(function(err, req, res, next) {
     res.status(err.status || 500);
     console.log(err.message)
     res.render('error', {
@@ -74,12 +91,15 @@ if (app.get('env') === 'development') {
   });
 }
 
-app.use(function (err, req, res, next) {
+// production error handler
+// no stacktraces leaked to user
+app.use(function(err, req, res, next) {
   res.status(err.status || 500);
   res.render('error', {
     message: err.message,
     error: err
   });
 });
+
 
 module.exports = app;
