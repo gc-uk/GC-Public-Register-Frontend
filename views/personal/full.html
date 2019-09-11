@@ -1,0 +1,165 @@
+{% extends "layout.html" %}
+
+{% block pageTitle %}
+Full register of personal licences
+{% endblock %}
+
+{% block pageDescription %}
+Full register of personal licences
+{% endblock %}
+
+{% block ogTitle %}
+Full register of personal licences
+{% endblock %}
+
+{% block heroClass %}
+
+{% endblock %}
+
+{% block heroContent %}
+
+
+
+
+
+
+{% endblock %}
+
+{% block beforeContent %}
+<a href="/personal/" class="govuk-back-link">Back to the register of personal licences</a>
+{% endblock %}
+
+{% block content %}
+
+<div class="govuk-grid-row">
+
+
+    <div class="govuk-grid-column-two-thirds">
+
+        <h1 class="govuk-heading-l">Full register of personal licences</h1>
+
+        <div class="gc-search gc-search--whitebg">
+            <form method="POST" action="search">
+                <label for="search" class="govuk-label">
+                    <p id="search-hint" class="govuk-body">
+                        Search by name, licence or account number
+                    </p>
+                </label>
+
+                <div class="inner-form govuk-!-margin-bottom-3">
+                    <div class="input-field second-wrap">
+                        <input id="search" name="search" type="text" placeholder="Search">
+                    </div>
+                    <div class="input-field third-wrap">
+                        <button class="btn-search" type="submit"><span class="govuk-visually-hidden">Search the personal licence register</span>
+                            <svg class="svg-inline--fa fa-search fa-w-16" aria-hidden="true" data-prefix="fas"
+                                data-icon="search" role="img" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512">
+                                <path fill="currentColor"
+                                    d="M505 442.7L405.3 343c-4.5-4.5-10.6-7-17-7H372c27.6-35.3 44-79.7 44-128C416 93.1 322.9 0 208 0S0 93.1 0 208s93.1 208 208 208c48.3 0 92.7-16.4 128-44v16.3c0 6.4 2.5 12.5 7 17l99.7 99.7c9.4 9.4 24.6 9.4 33.9 0l28.3-28.3c9.4-9.4 9.4-24.6.1-34zM208 336c-70.7 0-128-57.2-128-128 0-70.7 57.2-128 128-128 70.7 0 128 57.2 128 128 0 70.7-57.2 128-128 128z">
+                                </path>
+                            </svg>
+                        </button>
+                    </div>
+                </div>
+            </form>
+
+
+        </div>
+
+    </div>
+
+</div>
+
+
+<div class="govuk-grid-row">
+
+
+
+    <div class="govuk-grid-column-one-third">
+
+        <form method="POST" action="full">
+
+
+            <div class="gc-filters">
+
+                <h2 class="govuk-heading-m">Filters</h2>
+
+                <div class="govuk-form-group">
+                    <fieldset class="govuk-fieldset">
+                        <legend class="govuk-fieldset__legend govuk-fieldset__legend--s">
+                            <h3 class="govuk-fieldset__heading">
+                                Type of licence
+                            </h3>
+                        </legend>
+                        <div class="govuk-checkboxes govuk-checkboxes--small">
+                            <div class="govuk-checkboxes__item">
+                                <input class="govuk-checkboxes__input" id="type-1" name="type" type="checkbox"
+                                    value="PML">
+                                <label class="govuk-label govuk-checkboxes__label" for="type-1">
+                                    Management (PML)
+                                </label> </div>
+                            <div class="govuk-checkboxes__item">
+                                <input class="govuk-checkboxes__input" id="type-2" name="type" type="checkbox"
+                                    value="PFL">
+                                <label class="govuk-label govuk-checkboxes__label" for="type-2">
+                                    Functional (PFL)
+                                </label> </div>
+
+                        </div>
+                    </fieldset>
+                </div>
+
+
+                <button type="submit" class="govuk-button">
+                    Apply filter
+                </button>
+
+            </div>
+
+
+        </form>
+
+    </div>
+
+    <div class="govuk-grid-column-two-thirds">
+
+        <p class="govuk-body govuk-!-margin-bottom-2">
+            <span class="govuk-!-font-weight-bold">[x]</span>
+            results</p>
+        <hr class="govuk-section-break govuk-!-margin-bottom-4 govuk-!-margin-top-1 govuk-section-break--visible">
+
+        <div class="gc-search-result">
+
+         
+            <p class="govuk-heading-m govuk-!-margin-bottom-2">
+                <a href="/personal/detail/x" ga-on="click" ga-event-category="PLSearch"
+                    ga-event-action="Click"
+                    ga-event-label="{{ loop.index }}¬{{ loop.length }}¬{{i.accountno}}¬{{data['search']}}">[Account-name]</a>
+
+
+
+
+                <div class="govuk-grid-row govuk-!-margin-top-4">
+                        <div class="govuk-grid-column-full govuk-!-margin-bottom-1">
+                                <p class="govuk-heading-s govuk-!-margin-bottom-1">Account number</p>
+                                <p class="govuk-body-s govuk-!-margin-bottom-1"> [Account-number]</p>
+                            </div>
+                    <div class="govuk-grid-column-one-half govuk-!-margin-bottom-1">
+                        <p class="govuk-heading-s govuk-!-margin-bottom-1">Licensed for</p>
+                        <p class="govuk-body-s govuk-!-margin-bottom-1"> [Licenses-held]</p>
+                    </div>
+                    <div class="govuk-grid-column-one-half govuk-!-margin-bottom-1">
+                        <p class="govuk-heading-s  govuk-!-margin-bottom-1">Location</p>
+                        <p class="govuk-body-s govuk-!-margin-bottom-1"> [Location]</p>
+                    </div>
+                </div>
+
+
+        </div>
+
+    </div>
+
+</div>
+
+
+{% endblock %}

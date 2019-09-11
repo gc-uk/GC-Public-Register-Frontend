@@ -1,0 +1,56 @@
+{% extends "layout.html" %}
+
+{% block pageTitle %}
+Download the register of gambling businesses
+{% endblock %}
+
+{% block pageDescription %}
+Download information about gambling businesses
+{% endblock %}
+
+{% block heroClass %}
+gc-header-hero
+{% endblock %}
+
+{% block heroContent %}
+
+
+
+
+
+{% endblock %}
+
+{% block beforeContent %}
+<a href="/premises/" class="govuk-back-link">Back to the register of gambling premises</a>
+{% endblock %}
+
+{% block content %}
+
+
+<div class="govuk-grid-row">
+    <div class="govuk-grid-column-two-thirds">
+
+        <h1 class="govuk-heading-l">
+            Download the register of gambling licensed premises
+        </h1>
+
+
+        <div class="govuk-inset-text">
+            <p class="govuk-body govuk-!-font-weight-bold">
+                <a href="/registers/business/downloadfile">Gambling-premises-register.xlsx</a>
+            </p>
+            <p class="govuk-body-s govuk-!-margin-bottom-1">File size [x]mb</p>
+            <p class="govuk-body-s">Last updated {{lastupdated | date('DD MMMM YYYY')}}</p>
+        </div>
+
+        <p class="govuk-body">This file is the Excel format as the register contains datasets over multiple sheets.</p>
+
+        <p class="govuk-body">You should be able to open this in most spreadsheet applications.</p>
+
+
+    </div>
+
+</div>
+
+
+{% endblock %}

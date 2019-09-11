@@ -1,0 +1,211 @@
+{% extends "layout.html" %}
+
+{% block pageTitle %}
+Register of personal gambling licence holders
+{% endblock %}
+
+{% block pageDescription %}
+Search, view and download information about individuals who hold personal gambling licensed.
+{% endblock %}
+
+{% block ogTitle %}
+Search, view and download information about individuals who hold personal gambling licensed.
+{% endblock %}
+
+{% block heroClass %}
+gc-header-hero
+{% endblock %}
+
+{% block heroContent %}
+
+<section class="gc-hero gc-hero--image gc-hero--image-description govuk-!-padding-bottom-4">
+
+    <div class="govuk-width-container">
+        <div class="govuk-grid-row">
+            <div class="govuk-grid-column-two-thirds">
+                <h1 class="govuk-heading-l">Register of personal licences
+                </h1>
+                <p class="govuk-body-l">Individuals who hold a personal licence allowing them to work in the gambling industry.</p>
+
+                <div class="gc-search">
+                    <form method="POST" action="search">
+                        <label for="search" class="govuk-label">
+                            <p id="search-hint" class="govuk-body">
+                                Search by name, licence or account number
+                            </p>
+                        </label>
+
+                        <div class="inner-form govuk-!-margin-bottom-3">
+                            <div class="input-field second-wrap">
+                                <input id="search" name="search" type="text" placeholder="Search">
+                            </div>
+                            <div class="input-field third-wrap">
+                                <button class="btn-search" type="submit"><span class="govuk-visually-hidden">Search the personal
+                                        register</span>
+                                    <svg class="svg-inline--fa fa-search fa-w-16" aria-hidden="true" data-prefix="fas"
+                                        data-icon="search" role="img" xmlns="http://www.w3.org/2000/svg"
+                                        viewBox="0 0 512 512">
+                                        <path fill="currentColor"
+                                            d="M505 442.7L405.3 343c-4.5-4.5-10.6-7-17-7H372c27.6-35.3 44-79.7 44-128C416 93.1 322.9 0 208 0S0 93.1 0 208s93.1 208 208 208c48.3 0 92.7-16.4 128-44v16.3c0 6.4 2.5 12.5 7 17l99.7 99.7c9.4 9.4 24.6 9.4 33.9 0l28.3-28.3c9.4-9.4 9.4-24.6.1-34zM208 336c-70.7 0-128-57.2-128-128 0-70.7 57.2-128 128-128 70.7 0 128 57.2 128 128 0 70.7-57.2 128-128 128z">
+                                        </path>
+                                    </svg>
+                                </button>
+                            </div>
+                        </div>
+                    </form>
+
+
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+
+
+{% endblock %}
+
+{% block content %}
+
+
+<div class="govuk-grid-row">
+    <div class="govuk-grid-column-full">
+
+        <div class="govuk-grid-row gc-promo-group">
+            <div class="govuk-grid-column-one-third gc-promo-group__item">
+                <div class="gc-promo app-promo--grey">
+                    <a class="gc-promo__link-wrapper" href="/personal/full">
+                        <div class="gc-promo__content">
+                            <h3 class="govuk-heading-s govuk-!-margin-bottom-2">View the full register</h3>
+                            <p class="gc-promo__description">View and filter the full personal licence register</p>
+                            <p class="gc-promo__description">[x] records</p>
+                        </div>
+                    </a>
+                </div>
+            </div>
+
+            <div class="govuk-grid-column-one-third gc-promo-group__item">
+                <div class="gc-promo app-promo--grey">
+                    <a class="gc-promo__link-wrapper" href="/personal/download">
+
+                        <div class="gc-promo__content">
+                            <h3 class="govuk-heading-s govuk-!-margin-bottom-2">Download the register</h3>
+                            <p class="gc-promo__description">Compatible with spreadsheet applications</p>
+                            <p class="gc-promo__description">File size [x]mb</p>
+                        </div>
+                    </a>
+                </div>
+            </div>
+        </div>
+
+
+        <hr class="govuk-section-break govuk-section-break--m govuk-section-break--visible">
+        <h2 class="govuk-heading-m">
+            About the data
+        </h2>
+
+        <p class="govuk-body">Last updated: {{ lastupdated | date('DD MMMM YYYY')}}</p>
+
+        <p class="govuk-body">There are <span class="govuk-!-font-weight-bold">[x]</span>
+            records and <b>6 fields</b>
+            in this register.</p>
+
+        <table class="gc-table ">
+            <caption class="gc-table__caption">
+                <p class="govuk-body">The <b>6 fields</b> in this register</p>
+            </caption>
+            <thead class="gc-table__head">
+                <tr class="gc-table__row">
+                    <th class="gc-table__header" scope="col">
+                        <p class="govuk-body">Field name</p>
+                    </th>
+                    <th class="gc-table__header " scope="col">
+                        <p class="govuk-body">Field description</p>
+                    </th>
+                </tr>
+            </thead>
+            <tbody class="gc-table__body">
+                <tr class="gc-table__row">
+                    <td class="gc-table__cell">
+                        <p class=" govuk-body"><b>Account number</b></p>
+                    </td>
+                    <td class="gc-table__cell">
+                        <p class=" govuk-body">The unique reference for the licence holder.</p>
+                    </td>
+                </tr>
+                <tr class="gc-table__row">
+                    <td class="gc-table__cell">
+                        <p class=" govuk-body"><b>Name</b></p>
+                    </td>
+                    <td class="gc-table__cell">
+                        <p class=" govuk-body">The full name of the licence holder.</p>
+                    </td>
+                </tr>
+
+                <tr class="gc-table__row">
+                    <td class="gc-table__cell">
+                        <p class=" govuk-body"><b>Location</b></p>
+                    </td>
+                    <td class="gc-table__cell">
+                        <p class=" govuk-body">The home town or city of the licensee.
+                        </p>
+                    </td>
+                </tr>
+
+                <tr class="gc-table__row">
+                    <td class="gc-table__cell">
+                        <p class=" govuk-body"><b>Licence start</b></p>
+                    </td>
+                    <td class="gc-table__cell">
+                        <p class=" govuk-body">The date the licence was first held</p>
+                    </td>
+                </tr>
+
+                <tr class="gc-table__row">
+                    <td class="gc-table__cell">
+                        <p class=" govuk-body"><b>Maintenance date</b></p>
+                    </td>
+                    <td class="gc-table__cell">
+                        <p class=" govuk-body">The date the licence needs to be maintained by. For personal licences this is every 5 years.</p>
+                    </td>
+                </tr>
+                <tr class="gc-table__row">
+                    <td class="gc-table__cell">
+                        <p class=" govuk-body"><b>Licences</b></p>
+                    </td>
+                    <td class="gc-table__cell">
+                        <p class=" govuk-body">The licence the individual holds and the status of the licence
+                        </p>
+                    </td>
+                </tr>
+                <tr class="gc-table__row">
+                    <td class="gc-table__cell">
+                        <p class=" govuk-body"><b>Sanctions</b></p>
+                    </td>
+                    <td class="gc-table__cell">
+                        <p class=" govuk-body">Details of regulatory sanctions imposed on
+                            the individual by the Gambling Commission.
+                        </p>
+                    </td>
+                </tr>
+                <tr class="gc-table__row">
+                    <td class="gc-table__cell">
+                        <p class=" govuk-body"><b>Actions</b></p>
+                    </td>
+                    <td class="gc-table__cell">
+                        <p class=" govuk-body">Details of actions taken by the Gambling
+                            Commission against the individual.
+                        </p>
+                    </td>
+                </tr>
+                
+            </tbody>
+        </table>
+
+
+
+    </div>
+
+</div>
+
+{% endblock %}

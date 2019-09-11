@@ -1,0 +1,145 @@
+{% extends "layout.html" %}
+
+{% block pageTitle %}
+Registers and datasets
+{% endblock %}
+
+{% block ogTitle %}
+Public register and datasets
+{% endblock %}
+
+{% block pageDescription %}
+Search, view and download information about gambling licences for businesses, individuals and premises.
+{% endblock %}
+
+{% block heroClass %}
+gc-header-hero
+{% endblock %}
+
+{% block heroContent %}
+
+<section class="gc-hero gc-hero--image gc-hero--image-description govuk-!-padding-bottom-4">
+  <div class="govuk-width-container">
+    <div class="govuk-grid-row">
+      <div class="govuk-grid-column-two-thirds">
+        <h1 class="govuk-heading-l">Public registers and datasets</h1>
+        <p class="govuk-body-l">The Gambling Commission publish registers of licensed businesses, individuals and
+          premises.</p>
+        <p class="govuk-body govuk-!-margin-bottom-6">You can search, view and download this information as well as view
+          datasets of other Gambling Commission information.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+{% endblock %}
+
+{% block content %}
+
+<div class="govuk-grid-row">
+  <div class="govuk-grid-column-two-thirds">
+    <h2 class="govuk-heading-m">Registers</h2>
+    <div class="govuk-grid-row gc-promo-group">
+      <div class="govuk-grid-column-one-half gc-promo-group__item">
+        <div class="gc-promo app-promo--grey">
+          <a class="gc-promo__link-wrapper" href="/business/">
+            <div class="gc-promo__content">
+              <h3 class="govuk-heading-s govuk-!-margin-bottom-2">Gambling businesses</h3>
+              <p class="gc-promo__description">Search or download information about gambling businesses</p>
+              <p class="gc-promo__description">[x] records</p>
+            </div>
+          </a>
+        </div>
+      </div>
+      <div class="govuk-grid-column-one-half gc-promo-group__item">
+        <div class="gc-promo app-promo--grey">
+          <a class="gc-promo__link-wrapper" href="/personal/">
+            <div class="gc-promo__content">
+              <h2 class="govuk-heading-s govuk-!-margin-bottom-2">Personal licences</h2>
+              <p class="gc-promo__description">Search or download information about licensed individuals</p>
+              <p class="gc-promo__description">[x] records</p>
+            </div>
+          </a>
+        </div>
+      </div>
+      <div class="govuk-grid-column-one-half gc-promo-group__item">
+        <div class="gc-promo app-promo--grey">
+          <a class="gc-promo__link-wrapper" href="/premises/">
+            <div class="gc-promo__content">
+              <h3 class="govuk-heading-s govuk-!-margin-bottom-2">Premises</h3>
+              <p class="gc-promo__description">Search or download information about premises licensed for gambling</p>
+              <p class="gc-promo__description">[x] records</p>
+            </div>
+          </a>
+        </div>
+      </div>
+    </div>
+    <h2 class="govuk-heading-m" id="datasets">Datasets</h2>
+    <div class="govuk-grid-row gc-promo-group">
+      <div class="govuk-grid-column-one-half gc-promo-group__item ">
+        <div class="gc-promo app-promo--grey">
+          <a class="gc-promo__link-wrapper" href="/regulatory-actions/">
+            <div class="gc-promo__content">
+              <h3 class="govuk-heading-s govuk-!-margin-bottom-2">Regulatory actions</h3>
+              <p class="gc-promo__description">View details of regulatory action taken against businesses and
+                individuals</p>
+            </div>
+          </a>
+        </div>
+      </div>
+      <div class="govuk-grid-column-one-half gc-promo-group__item ">
+        <div class="gc-promo app-promo--grey">
+          <a class="gc-promo__link-wrapper" href="/test-houses/">
+            <div class="gc-promo__content">
+              <h3 class="govuk-heading-s govuk-!-margin-bottom-2">Test houses</h3>
+              <p class="gc-promo__description">View or download information about Gambling Commission approved test
+                houses</p>
+            </div>
+          </a>
+        </div>
+      </div>
+      <div class="govuk-grid-column-one-half gc-promo-group__item ">
+        <div class="gc-promo app-promo--grey">
+          <a class="gc-promo__link-wrapper" href="/drop-and-win/">
+            <div class="gc-promo__content">
+              <h3 class="govuk-heading-s govuk-!-margin-bottom-2">Drop and Win</h3>
+              <p class="gc-promo__description">View or download the drop and win dataset for the casino sector</p>
+            </div>
+          </a>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="govuk-grid-column-one-third">
+    <aside class="app-related-items" role="complementary">
+      <h3 class="govuk-heading-s" id="subsection-title">
+        Other useful information
+      </h3>
+      <nav role="navigation" aria-labelledby="subsection-title">
+        <ul class="govuk-list govuk-!-font-size-16">
+          <li><a class="govuk-link"
+              href="https://www.gamblingcommission.gov.uk/for-the-public/Your-rights/Complaints.aspx" target="_blank"
+              rel="noopener">How to complain about a gambling business</a></li>
+          <li><a class="govuk-link"
+              href="https://www.gamblingcommission.gov.uk/for-the-public/Safer-gambling/Safer-gambling.aspx"
+              target="_blank" rel="noopener">Safer gambling</a></li>
+          <li><a class="govuk-link"
+              href="https://www.gamblingcommission.gov.uk/for-gambling-businesses/Do-I-need-a-licence/Types-of-operating-licence.aspx"
+              target="_blank" rel="noopener">Getting an operating licence</a></li>
+          <li><a class="govuk-link"
+              href="https://www.gamblingcommission.gov.uk/for-gambling-businesses/Do-I-need-a-licence/Personal-management-licence.aspx"
+              target="_blank" rel="noopener">Getting a personal licence</a></li>
+          <li><a class="govuk-link"
+              href="https://www.gamblingcommission.gov.uk/for-gambling-businesses/Compliance/LCCP/Licence-conditions-and-codes-of-practice.aspx"
+              target="_blank" rel="noopener">Licence Conditions and Codes of Practice</a></li>
+        </ul>
+      </nav>
+      <h3 class="govuk-heading-s govuk-!-margin-top-7">Struggling with gambling?</h3>
+      <p class="govuk-body-s">If you or someone you know is struggling with gambling activity, you can find the <a
+          href="https://www.gamblingcommission.gov.uk/for-the-public/Safer-gambling/Getting-help-to-control-your-gambling.aspx"
+          target="_Blank" rel="noopener">details of organisations</a> who can help on our website.</p>
+    </aside>
+  </div>
+</div>
+
+{% endblock %}

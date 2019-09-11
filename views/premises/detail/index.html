@@ -1,0 +1,118 @@
+{% extends "layout.html" %}
+
+{% block pageTitle %}
+Premises
+{% endblock %}
+
+{% block pageDescription %}
+[Licensee-name]
+{% endblock %}
+
+{% block heroClass %}
+
+{% endblock %}
+
+{% block heroContent %}
+
+
+
+{% endblock %}
+
+{% block beforeContent %}
+
+<a href="/premises/" class="govuk-back-link">Back to the register of gambling premises</a>
+
+{% endblock %}
+
+
+{% block content %}
+
+<div class="govuk-grid-row">
+
+    <div class="govuk-grid-column-full"> 
+      <h1 class="govuk-heading-l">[Address-line1]</h1></div>
+
+  <div class="govuk-grid-column-one-half">
+
+   
+
+    <p class="govuk-body">
+      <address>
+        [Address-line1]<br>
+        [Address-line2]<br>
+        [City]<br>
+        [Postcode]
+      </address>
+    </p>
+
+  
+
+
+  </div>
+
+  <div class="govuk-grid-column-one-half">
+
+      <p class="govuk-heading-s govuk-!-margin-bottom-0">
+          Premises type
+        </p>
+        <p class="govuk-body">[Premises-type]</p>
+    
+    
+        <p class="govuk-heading-s govuk-!-margin-bottom-0">
+          Licensing authority
+        </p>
+        <p class="govuk-body">[Licensing-authority]</p>
+    
+    
+        <p class="govuk-heading-s govuk-!-margin-bottom-0">
+          Operated by
+        </p>
+        <p class="govuk-body">
+          <a href="/registers/business/details/x">[Operator-name]</a>
+        </p>
+
+  </div>
+
+  <script async defer
+    src="https://maps.googleapis.com/maps/api/js?key=AIzaSyA4ZNFwoRz5iMIUtpnemwH54BKdlMtOS74&callback=initMap"></script>
+
+  <script>
+    var geocoder;
+    var map;
+    var address = "Victoria Square House, Birmingham, B2 4BP, United Kingdom";
+
+    function initMap() {
+      var map = new google.maps.Map(document.getElementById('map'), {
+        zoom: 16,
+        center: {
+          lat: 0,
+          lng: 0
+        }
+      });
+      geocoder = new google.maps.Geocoder();
+      codeAddress(geocoder, map);
+    }
+
+    function codeAddress(geocoder, map) {
+      geocoder.geocode({
+        'address': address
+      }, function (results, status) {
+        if (status === 'OK') {
+          map.setCenter(results[0].geometry.location);
+          var marker = new google.maps.Marker({
+            map: map,
+            position: results[0].geometry.location
+          });
+        } else {
+          alert('Geocode was not successful for the following reason: ' + status);
+        }
+      });
+    }
+  </script>
+
+</div>
+
+
+
+
+{% endblock %}

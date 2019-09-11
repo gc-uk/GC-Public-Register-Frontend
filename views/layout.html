@@ -1,0 +1,181 @@
+<!DOCTYPE html>
+<html lang="en" class="govuk-template app-html-class">
+
+<head>
+
+    <meta charset="utf-8" />
+    <title>{% block pageTitle %}{% endblock %} - Public Register - Gambling Commission
+    </title>
+    <meta name="description" content="{% block pageDescription %}{% endblock %}">
+    <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta property="og:title" content="{% block ogTitle %}{% endblock %}" />
+    <meta property="og:type" content="website" />
+    <meta property="og:url" content="{{currentURL}}" />
+    <meta property="og:image" content="http://localhost:3029/public/images/gc-logo-white-bg.jpg" />
+    <meta property="og:image:alt" content="Gambling Commission Logo" />
+    <link rel="mask-icon" href="https://gc-frontend-cdn.herokuapp.com/images/govuk-mask-icon.svg" color="blue">
+    <link rel="apple-touch-icon" sizes="180x180"
+        href="https://gc-frontend-cdn.herokuapp.com/images/govuk-apple-touch-icon-180x180.png">
+    <link rel="apple-touch-icon" sizes="167x167"
+        href="https://gc-frontend-cdn.herokuapp.com/images/govuk-apple-touch-icon-167x167.png">
+    <link rel="apple-touch-icon" sizes="152x152"
+        href="https://gc-frontend-cdn.herokuapp.com/images/govuk-apple-touch-icon-152x152.png">
+    <link rel="apple-touch-icon" href="https://gc-frontend-cdn.herokuapp.com/images/govuk-apple-touch-icon.png">
+
+    <!--[if !IE 8]><!-->
+    <link href="https://gc-frontend-cdn.herokuapp.com/public/stylesheets/application.css" rel="stylesheet" />
+    <link href="/public/styles.css" rel="stylesheet" />
+
+    <!--<![endif]-->
+
+    <!--[if IE 8]>
+    <link href="https://gc-frontend-cdn.herokuapp.com/public/stylesheets/application-ie8.css" rel="stylesheet" />
+  <![endif]-->
+
+    <!--[if lt IE 9]>
+    <script src="/html5-shiv/html5shiv.js"></script>
+  <![endif]-->
+
+    <meta name="author" content="Gambling Commission Digital Team" />
+    <meta name="copyright" content="Gambling Commission" />
+    <meta name="robots" content="index,follow" />
+    {% block pageMeta %}{% endblock %}
+
+
+
+
+</head>
+
+<body class="govuk-template__body app-body-class">
+    <script>
+        document.body.className = ((document.body.className) ? document.body.className + ' js-enabled' : 'js-enabled');
+    </script>
+    <section>
+        <a href="#main-content" class="govuk-skip-link">Skip to main content</a>
+
+        <div class="gc-beta-banner">
+            <div class=" govuk-width-container">
+                <span class="gc-beta-tag">beta</span> This is a new website <a href="/feedback/" target="_Blank"> give us feedback</a>.
+            </div>
+        </div>
+    </section>
+    <header class="gc-header {% block heroClass %}{% endblock%}" role="banner" data-module="govuk-header">
+        <div class="gc-header-container govuk-width-container">
+            <div class="gc-header-logo">
+                <a href="/"><span
+                        class="govuk-visually-hidden">Go to the homepage of the public registers and datasets service.</span>
+                    <img src="https://gc-frontend-cdn.herokuapp.com/public/images/logo.png" class="gc-logo"
+                        alt="Gambling Commission logo">
+                </a>
+            </div>
+            <div class="gc-header-content">
+                <a href="/" class="gc-header-service-name">
+                    Public registers and datasets
+                </a>
+                <button type="button" role="button" class="govuk-header__menu-button govuk-js-header-toggle"
+                    aria-controls="navigation" aria-label="Show or hide Top Level Navigation">Menu</button>
+                <nav>
+                    <ul id="navigation" class="govuk-header__navigation " aria-label="Top Level Navigation">
+                        <li class="govuk-header__navigation-item {{ businessactive }}">
+                            <a class="govuk-header__link" href="/business/">
+                                Businesses
+                            </a>
+                        </li>
+                        <li class="govuk-header__navigation-item {{ personalactive }}">
+                            <a class="govuk-header__link" href="/personal/">
+                                Personal licences
+                            </a>
+                        </li>
+
+                        <li class="govuk-header__navigation-item {{ premisesactive }}">
+                            <a class="govuk-header__link" href="/premises/">
+                                Premises
+                            </a>
+                        </li>
+
+                        <li class="govuk-header__navigation-item {{ datasetsactive }}">
+                            <a class="govuk-header__link" href="/#datasets">
+                                Datasets
+                            </a>
+                        </li>
+                    </ul>
+                </nav>
+            </div>
+        </div>
+    </header>
+
+
+    {% block heroContent %}{% endblock %}
+    <section>
+        <div class="govuk-width-container">
+            {% block beforeContent %}{% endblock %}
+        </div>
+    </section>
+    <main class="govuk-main-wrapper app-main-class" id="main-content" role="main">
+        <div class="govuk-width-container">
+            {% block content %}{% endblock %}</div>
+    </main>
+
+
+
+    <section>
+        <div class="gc-footer-top">
+            <div class="govuk-width-container">
+                <a class="gc-return-to-top" href="#">
+                    Back to top <span class="govuk-visually-hidden">of the page</span></a>
+            </div>
+        </div>
+    </section>
+    <footer class="gc-footer " role="contentinfo">
+        <div class="govuk-width-container ">
+            <div class="govuk-footer__meta">
+                <div class="govuk-footer__meta-item govuk-footer__meta-item--grow">
+                    <h3 class="govuk-visually-hidden">Support links</h3>
+                    <ul class="govuk-footer__inline-list">
+                        <li class="govuk-footer__inline-list-item">
+                            <a class="govuk-footer__link" href="/accessibility">
+                                Accessibility statement
+                            </a>
+                        </li>
+                        <li class="govuk-footer__inline-list-item">
+                            <a class="govuk-footer__link"
+                                href="https://www.gamblingcommission.gov.uk/Footer/Privacy-and-cookies.aspx"
+                                target="_Blank" rel="noopener">
+                                Privacy and cookies
+                            </a>
+                        </li>
+                        <li class="govuk-footer__inline-list-item">
+                            <a class="govuk-footer__link"
+                                href="https://www.gamblingcommission.gov.uk/Footer/Terms-and-conditions.aspx"
+                                target="_Blank" rel="noopener">
+                                Terms and conditions
+                            </a>
+                        </li>
+                        
+                        <li class="govuk-footer__inline-list-item">
+                                <a class="govuk-footer__link"
+                                    href="/help">
+                                    Help using this service
+                                </a>
+                            </li>
+                    </ul>
+                    <span class="gc-footer-sub">
+                        Built by the Gambling Commission Digital Team
+                    </span>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <script
+  src="https://code.jquery.com/jquery-3.4.1.slim.min.js"
+  integrity="sha256-pasqAKBDmFT4eHoN2ndd6lN370kFiGUFyTiUHWhU7k8="
+  crossorigin="anonymous"></script>
+    <!-- <script src="https://gc-frontend-cdn.herokuapp.com/public/javascripts/jquery-1.11.3.js"></script> -->
+    <script src="https://gc-frontend-cdn.herokuapp.com/public/javascripts/all.js"></script>
+    <script src="https://gc-frontend-cdn.herokuapp.com/public/javascripts/application.js"></script>
+
+</body>
+
+</html>

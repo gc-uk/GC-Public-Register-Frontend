@@ -1,0 +1,69 @@
+{% extends "layout.html" %}
+
+{% block pageTitle %}
+Drop and Win dataset
+{% endblock %}
+
+{% block pageDescription %}
+Drop and Win dataset for the UK casino industry
+{% endblock %}
+
+{% block heroClass %}
+
+{% endblock %}
+
+{% block heroContent %}
+
+
+
+
+
+{% endblock %}
+
+{% block beforeContent %}
+<a href="/#datasets" class="govuk-back-link">Back to list of datasets</a>
+{% endblock %}
+
+{% block content %}
+
+
+<div class="govuk-grid-row">
+    <div class="govuk-grid-column-two-thirds">
+
+        <h1 class="govuk-heading-l">
+            Drop and Win dataset
+        </h1>
+
+        <p class="govuk-body">Casino drop and win data is provided voluntarily by all casinos licensed in Great Britain and shows the amount of money exchanged for chips in a casino (drop) and the amount retained by the casino (win). </p>
+
+        <h2 class="govuk-heading-m">
+                Download the dataset
+            </h2>
+            
+        <div class="govuk-inset-text">
+            <p class="govuk-body govuk-!-font-weight-bold">
+                <a href="/drop-and-win/downloadfile">drop-and-win.xlsx</a>
+            </p>
+            <p class="govuk-body-s govuk-!-margin-bottom-1">File size [x]mb</p>
+            <p class="govuk-body-s">Last updated {{lastupdated | date('DD MMMM YYYY')}}</p>
+        </div>
+
+        <p class="govuk-body">This file is the Excel format as the register contains datasets over multiple sheets.</p>
+
+        <p class="govuk-body">You should be able to open this in most spreadsheet applications.</p>
+
+        <h2 class="govuk-heading-m">
+                Additional information
+            </h2>
+    
+<p class="govuk-body">The latest data is published on the final Thursday of every month and is based on an updated rolling year average, showing figures for the previous 12 months.</p>
+
+<p class="govuk-body">Premises-based casinos are not obliged to provide us with this data whether they have a licence under the 1968 Act or under the 2005 Act. Some of the London casinos are referred to as ‘high-end’, this term was agreed following discussion with the casino trade associations.</p>
+
+
+    </div>
+
+</div>
+
+
+{% endblock %}

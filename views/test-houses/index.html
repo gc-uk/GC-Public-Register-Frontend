@@ -1,0 +1,121 @@
+{% extends "layout.html" %}
+
+{% block pageTitle %}
+Test house dataset
+{% endblock %}
+
+{% block pageDescription %}
+Test house dataset which details the organisations which are approved by the Gambling Commission to test compliance against technical standards and requirements.
+{% endblock %}
+
+{% block heroClass %}
+
+{% endblock %}
+
+{% block heroContent %}
+
+
+
+
+
+{% endblock %}
+
+{% block beforeContent %}
+<a href="/#datasets" class="govuk-back-link">Back to list of datasets</a>
+{% endblock %}
+
+{% block content %}
+
+
+<div class="govuk-grid-row">
+    <div class="govuk-grid-column-two-thirds">
+
+        <h1 class="govuk-heading-l">
+            Test house dataset
+        </h1>
+
+        <p class="govuk-body">We publish a list of approved test houses that are approved to test compliance against our technical standards and requirements including:
+           </p>
+          <ul class="govuk-list govuk-list--bullet">
+              <li><a href="http://www.gamblingcommission.gov.uk/for-gambling-businesses/Compliance/Sector-specific-compliance/Arcades-and-machines/Gaming-machine-technical-standards.aspx" target="_blank" rel="noopener">gaming machines technical standards</a></li>
+              <li><a href="http://www.gamblingcommission.gov.uk/for-gambling-businesses/Compliance/Sector-specific-compliance/Remote-and-software/Remote-gambling-and-software-technical-standards.aspx" target="_blank" rel="noopener">remote gambling and software technical standards</a></li>
+              <li><a href="http://www.gamblingcommission.gov.uk/for-gambling-businesses/Compliance/Sector-specific-compliance/Bingo/Bingo-and-casino-technical-requirements.aspx" target="_blank" rel="noopener">bingo and casino technical requirements</a></li>
+          </ul> 
+       
+
+        <h2 class="govuk-heading-m">
+                Download the dataset
+            </h2>
+        <div class="govuk-inset-text">
+                <p class="govuk-body govuk-!-font-weight-bold">
+                    <a href="/test-house/downloadfile">test-house.xlsx</a>
+                </p>
+                <p class="govuk-body-s govuk-!-margin-bottom-1">File size [x]mb</p>
+                <p class="govuk-body-s">Last updated {{lastupdated | date('DD MMMM YYYY')}}</p>
+            </div>
+
+            
+    <p class="govuk-body-s">This file is the Excel format as the register contains datasets over multiple sheets.</p>
+
+    <p class="govuk-body-s">You should be able to open this in most spreadsheet applications.</p>
+     
+
+        <h2 class="govuk-heading-m">
+                Test houses dataset
+            </h2>
+    
+            <table class="gc-table">
+                    <caption class="gc-table__caption">
+                        <p class="govuk-body">18 test houses</p>
+                    </caption>
+                    <thead class="gc-table__head">
+                        <tr class="gc-table__row">
+                            <th class="gc-table__header" scope="col">
+                               Test house name
+                            </th>
+                            <th class="gc-table__header " scope="col">
+                               Website
+                            </th>
+                            <th class="gc-table__header " scope="col">
+                                    Remote
+                                </th>                              
+                        </tr>
+                    </thead>
+                    <tbody class="gc-table__body">
+                        <tr class="gc-table__row">
+                            <td class="gc-table__cell">
+                               eCOGRA
+                            </td>
+                            <td class="gc-table__cell">
+                              <a href="https://www.ecogra.org/" target="_blank" rel="noopener">eCOGRA</a>
+                            </td>
+                            <td class="gc-table__cell">
+                                    
+                                </td>
+                        </tr>                     
+                    </tbody>
+                </table>
+        
+
+    </div>
+
+    <div class="govuk-grid-column-one-third">
+            <div class="govuk-inset-text">
+                    <p class="govuk-body govuk-!-font-weight-bold">
+                        <a href="/test-house/downloadfile">test-house.xlsx</a>
+                    </p>
+                    <p class="govuk-body-s govuk-!-margin-bottom-1">File size [x]mb</p>
+                    <p class="govuk-body-s">Last updated {{lastupdated | date('DD MMMM YYYY')}}</p>
+                </div>
+
+                
+        <p class="govuk-body-s">This file is the Excel format as the register contains datasets over multiple sheets.</p>
+
+        <p class="govuk-body-s">You should be able to open this in most spreadsheet applications.</p>
+
+    </div>
+
+</div>
+
+
+{% endblock %}
