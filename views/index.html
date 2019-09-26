@@ -46,7 +46,7 @@ gc-header-hero
             <div class="gc-promo__content">
               <h3 class="govuk-heading-s govuk-!-margin-bottom-2">Gambling businesses</h3>
               <p class="gc-promo__description">Search or download information about gambling businesses</p>
-              <p class="gc-promo__description">[x] records</p>
+              <p class="gc-promo__description">{{registerData.NumberOfOperatorRecords  | numeral("0,0")}} records</p>
             </div>
           </a>
         </div>
@@ -57,7 +57,7 @@ gc-header-hero
             <div class="gc-promo__content">
               <h2 class="govuk-heading-s govuk-!-margin-bottom-2">Personal licences</h2>
               <p class="gc-promo__description">Search or download information about licensed individuals</p>
-              <p class="gc-promo__description">[x] records</p>
+              <p class="gc-promo__description">{{registerData.NumberOfIndividualRecords  | numeral("0,0")}} records</p>
             </div>
           </a>
         </div>
@@ -68,7 +68,7 @@ gc-header-hero
             <div class="gc-promo__content">
               <h3 class="govuk-heading-s govuk-!-margin-bottom-2">Premises</h3>
               <p class="gc-promo__description">Search or download information about premises licensed for gambling</p>
-              <p class="gc-promo__description">[x] records</p>
+              <p class="gc-promo__description">{{registerData.NumberOfPremisesRecords  | numeral("0,0")}} records</p>
             </div>
           </a>
         </div>

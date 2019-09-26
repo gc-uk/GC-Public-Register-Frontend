@@ -1,8 +1,20 @@
+const utils = require('../utils.js');
 var personalactive = 'govuk-header__navigation-item--active';
 
 exports.personal_home_get = function (req, res) {
-    res.render("personal/index", {
-        personalactive
+
+    currentURL = utils.getFullURL(req)
+    const getSummaryRegisterData = require('../data/azuresql/getSummaryRegisterData');
+    let summaryRegisterData = getSummaryRegisterData();
+    var registerData = "";
+    summaryRegisterData.then(result => {
+            registerData = result.summaryRegisterData.recordset[0];
+            res.render("personal/index", {
+                personalactive,
+                registerData
+            });
+    }).catch(err => {
+            console.log(err);
     });
 }
 

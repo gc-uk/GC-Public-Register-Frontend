@@ -6,6 +6,7 @@ var cookieParser = require('cookie-parser');
 var bodyParser = require('body-parser');
 var nunjucks = require('nunjucks');
 var dateFilter = require('nunjucks-date-filter');
+var numeralFilter = require('nunjucks-numeral-filter');
 var markdown = require('nunjucks-markdown');
 var marked = require('marked');
 var sessionInMemory = require('express-session');
@@ -35,6 +36,7 @@ var PATH_TO_TEMPLATES = path.join(__dirname, 'views') ;
   });
 
   // note that 'date' is the function name you'll use in the template. As shown in nunjucks-date-filter's readme
+  env.addFilter('numeral', numeralFilter)
   env.addFilter('date', dateFilter);
   markdown.register(env, marked);
 

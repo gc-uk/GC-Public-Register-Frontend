@@ -32,7 +32,7 @@ View and filter the full register of gambling businesses
         <h1 class="govuk-heading-l">Business register search results</h1>
 
         <div class="gc-search gc-search--whitebg">
-            <form method="POST" action="search">
+            <form method="get" action="results">
                 <label for="search" class="govuk-label">
                     <p id="search-hint" class="govuk-body">
                         Search by business, trading or domain name, or account number
@@ -41,7 +41,8 @@ View and filter the full register of gambling businesses
 
                 <div class="inner-form govuk-!-margin-bottom-3">
                     <div class="input-field second-wrap">
-                        <input id="search" name="search" type="text" placeholder="Search">
+                        <input id="search" name="business-search" type="text" placeholder="Search"
+                            value="{{data['business-search']}}">
                     </div>
                     <div class="input-field third-wrap">
                         <button class="btn-search" type="submit"><span class="govuk-visually-hidden">Search the gambling
@@ -82,7 +83,7 @@ View and filter the full register of gambling businesses
                     <fieldset class="govuk-fieldset">
                         <legend class="govuk-fieldset__legend govuk-fieldset__legend--s">
                             <h3 class="govuk-fieldset__heading">
-                                Activity
+                                Licensed for
                             </h3>
                         </legend>
                         <div class="govuk-checkboxes govuk-checkboxes--small">
@@ -158,34 +159,75 @@ View and filter the full register of gambling businesses
 
     <div class="govuk-grid-column-two-thirds">
 
+
+
         <p class="govuk-body govuk-!-margin-bottom-2">
-            <span class="govuk-!-font-weight-bold">[x]</span>
+            <span class="govuk-!-font-weight-bold">{{registerData.accounts.recordset.length}}</span>
             results</p>
         <hr class="govuk-section-break govuk-!-margin-bottom-4 govuk-!-margin-top-1 govuk-section-break--visible">
+        {% for i in registerData.accounts.recordset %}
 
         <div class="gc-search-result">
-            <span class="govuk-visually-hidden">Record x of x</span>
+            <span class="govuk-visually-hidden">Record {{loop.index}} of
+                {{registerData.accounts.recordset.length}}</span>
             <p class="govuk-heading-m govuk-!-margin-bottom-2">
-                <a href="/business/detail/x" ga-on="click" ga-event-category="OLSearch" ga-event-action="Click"
-                    ga-event-label="{{ loop.index }}¬{{ loop.length }}¬{{i.accountno}}¬{{data['search']}}">[Account-name]</a>
+                <a href="/business/detail/{{i.accountnumber}}" ga-on="click" ga-event-category="OLSearch"
+                    ga-event-action="Click"
+                    ga-event-label="{{ loop.index }}¬{{ loop.length }}¬{{i.accountnumber}}¬{{data['business-search']}}">{{i.accountname}}</a>
             </p>
             <h3 class="govuk-body-s govuk-!-font-weight-bold govuk-!-margin-bottom-1 govuk-!-margin-top-3">Account
                 number
             </h3>
-            <p class="govuk-body-s govuk-!-margin-bottom-1">123456</p>
+            <p class="govuk-body-s govuk-!-margin-bottom-1">{{i.accountnumber}}</p>
             <h3 class="govuk-body-s govuk-!-font-weight-bold govuk-!-margin-bottom-1 govuk-!-margin-top-3">Matching
                 trading names
             </h3>
-            <span class="govuk-tag gc-tag  gc-tag--inactive">
-                [item]
-            </span>
+            <span class="govuk-visually-hidden">List of trading names</span>
+            <ul class="gc-meta-tag">
+                    {% if registerData.tradingnames.recordset.length === 0 %}
+                No matching trading names
+                {% else %}
+                {% for tn in registerData.tradingnames.recordset %}
+                {% if tn.AccountNumber === i.accountnumber %}
+                {% set t = 1 %}
+                <li>{{tn.TradingName}}</li>
+                {% endif %}
+                {% if t !== 1 %}
+                {% if loop.last %}
+                No matching trading names
+                {% endif %}
+                {% endif %}
+                {% endfor %}
+                {% endif %}
+            </ul>
             <h3 class="govuk-body-s govuk-!-font-weight-bold govuk-!-margin-bottom-1 govuk-!-margin-top-3">Matching
                 domain names
             </h3>
-            <span class="govuk-tag gc-tag  gc-tag--inactive">
-                [item]
-            </span>
+
+         
+
+            <span class="govuk-visually-hidden">List of domain names</span>
+            <ul class="gc-meta-tag">
+                {% if registerData.domainnames.recordset.length === 0 %}
+                No matching domain names
+                {% else %}
+                {% for dn in registerData.domainnames.recordset %}
+                {% if dn.AccountNumber === i.accountnumber %}
+                {% set d = 1 %}
+                <li>{{dn.DomainName}}</li>
+                {% endif %}
+                {% if d !== 1 %}
+                {% if loop.last %}
+                No matching domain names
+                {% endif %}
+                {% endif %}
+                {% endfor %}
+                {% endif %}
+
+
+            </ul>
         </div>
+        {% endfor %}
 
     </div>
 

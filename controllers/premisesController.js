@@ -1,8 +1,21 @@
+const utils = require('../utils.js');
 var premisesactive = 'govuk-header__navigation-item--active';
 
 exports.premises_home_get = function (req, res) {
-    res.render("premises/index", {
-        premisesactive
+  
+
+    currentURL = utils.getFullURL(req)
+    const getSummaryRegisterData = require('../data/azuresql/getSummaryRegisterData');
+    let summaryRegisterData = getSummaryRegisterData();
+    var registerData = "";
+    summaryRegisterData.then(result => {
+            registerData = result.summaryRegisterData.recordset[0];
+            res.render("premises/index", {
+                premisesactive,
+                registerData
+            });
+    }).catch(err => {
+            console.log(err);
     });
 }
 

@@ -29,7 +29,7 @@ gc-header-hero
                     activities in the United Kingdom.</p>
 
                 <div class="gc-search">
-                    <form method="POST" action="search">
+                    <form method="GET" action="results">
                         <label for="search" class="govuk-label">
                             <p id="search-hint" class="govuk-body">
                                 Search by business, trading or domain name, or account number
@@ -38,7 +38,7 @@ gc-header-hero
 
                         <div class="inner-form govuk-!-margin-bottom-3">
                             <div class="input-field second-wrap">
-                                <input id="search" name="search" type="text" placeholder="Search">
+                                <input id="search" name="business-search" type="text" placeholder="Search">
                             </div>
                             <div class="input-field third-wrap">
                                 <button class="btn-search" type="submit"><span class="govuk-visually-hidden">Search the gambling business register</span>
@@ -78,7 +78,7 @@ gc-header-hero
                         <div class="gc-promo__content">
                             <h3 class="govuk-heading-s govuk-!-margin-bottom-2">View the full register</h3>
                             <p class="gc-promo__description">View and filter the full gambling business register</p>
-                            <p class="gc-promo__description">[x] records</p>
+                            <p class="gc-promo__description">{{registerData.NumberOfOperatorRecords  | numeral("0,0")}} records</p>
                         </div>
                     </a>
                 </div>
@@ -104,9 +104,9 @@ gc-header-hero
             About the data
         </h2>
 
-        <p class="govuk-body">Last updated: {{ lastupdated | date('DD MMMM YYYY')}}</p>
+        <p class="govuk-body">Last updated: {{registerData.lastupdated | date('DD MMMM YYYY')}}</p>
 
-        <p class="govuk-body">There are <span class="govuk-!-font-weight-bold">[x]</span>
+        <p class="govuk-body">There are <span class="govuk-!-font-weight-bold">{{registerData.NumberOfOperatorRecords  | numeral("0,0")}}</span>
             records and <b>9 fields</b>
             in this register.</p>
 

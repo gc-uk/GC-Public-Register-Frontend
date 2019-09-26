@@ -77,7 +77,7 @@ gc-header-hero
                         <div class="gc-promo__content">
                             <h3 class="govuk-heading-s govuk-!-margin-bottom-2">View the full register</h3>
                             <p class="gc-promo__description">View and filter the full premises register</p>
-                            <p class="gc-promo__description">[x] records</p>
+                            <p class="gc-promo__description">{{registerData.NumberOfPremisesRecords  | numeral("0,0")}} records</p>
                         </div>
                     </a>
                 </div>
@@ -102,10 +102,9 @@ gc-header-hero
         <h2 class="govuk-heading-m">
             About the data
         </h2>
+        <p class="govuk-body">Last updated: {{registerData.lastupdated | date('DD MMMM YYYY')}}</p>
 
-        <p class="govuk-body">Last updated: {{ lastupdated | date('DD MMMM YYYY')}}</p>
-
-        <p class="govuk-body">There are <span class="govuk-!-font-weight-bold">[x]</span>
+        <p class="govuk-body">There are <span class="govuk-!-font-weight-bold">{{registerData.NumberOfPremisesRecords  | numeral("0,0")}}</span>
             records and <b>3 fields</b>
             in this register.</p>
 
