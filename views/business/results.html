@@ -162,7 +162,7 @@ View and filter the full register of gambling businesses
 
 
         <p class="govuk-body govuk-!-margin-bottom-2">
-            <span class="govuk-!-font-weight-bold">{{registerData.accounts.recordset.length}}</span>
+            <span class="govuk-!-font-weight-bold">{{registerData.accounts.recordset.length | numeral("0,0")}}</span>
             results</p>
         <hr class="govuk-section-break govuk-!-margin-bottom-4 govuk-!-margin-top-1 govuk-section-break--visible">
         {% for i in registerData.accounts.recordset %}

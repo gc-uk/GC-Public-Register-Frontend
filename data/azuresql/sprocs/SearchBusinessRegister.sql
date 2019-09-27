@@ -1,10 +1,15 @@
 USE [publicregisters]
 GO
-/****** Object:  StoredProcedure [dbo].[SearchBusinessRegister]    Script Date: 26/09/2019 14:13:10 ******/
+
+/****** Object:  StoredProcedure [dbo].[SearchBusinessRegister]    Script Date: 27/09/2019 12:21:00 ******/
 SET ANSI_NULLS ON
 GO
+
 SET QUOTED_IDENTIFIER ON
 GO
+
+
+
 -- =============================================
 -- Author:		Andy Williams-Jones
 -- Create date: 26 September 2019
@@ -26,6 +31,13 @@ BEGIN
 	or tn.tradingname like '%'+ @query +'%' 
     or dn.domainname like '%'+ @strippedquery +'%' 
 	or tn.tradingname like '%'+ @strippedquery +'%'
+	or ac.accountnumber = @query
 		order by accountname asc
 END
+
+
+
+
 GO
+
+

@@ -34,8 +34,8 @@ gc-header-hero
         <h1 class="govuk-heading-l">Premises register search results</h1>
 
         <div class="gc-search gc-search--whitebg">
-            <form method="POST" action="search">
-                <label for="search" class="govuk-label">
+            <form method="get" action="results">
+                <label for="premises-search" class="govuk-label">
                     <p id="search-hint" class="govuk-body">
                         Search by business name, account number, street, town or postcode
                     </p>
@@ -43,7 +43,7 @@ gc-header-hero
 
                 <div class="inner-form govuk-!-margin-bottom-3">
                     <div class="input-field second-wrap">
-                        <input id="search" name="search" type="text" placeholder="Search">
+                        <input id="search" name="premises-search" type="text" placeholder="Search" value="{{data['premises-search']}}">
                     </div>
                     <div class="input-field third-wrap">
                         <button class="btn-search" type="submit"><span class="govuk-visually-hidden">Search the gambling
@@ -80,8 +80,9 @@ gc-header-hero
 
                 <h2 class="govuk-heading-m">Filters</h2>
 
+                
 
-
+<!-- 
                 <div class="govuk-form-group">
                     <label class="govuk-label" for="sort">
                         Operated by
@@ -90,11 +91,11 @@ gc-header-hero
 
                         <option value="all">View all</option>
 
-                        {% for account, i in list.premises.recordset |sort(false, true, 'Account') | groupby('Account') %}
-                        <option value="{{account}}">{{account | truncate(30)}}</option>
+                        {% for accountname, i in registerData.Premises.recordset |sort(false, true, 'accountname') | groupby('accountname') %}
+                        {% for accountnumber, i in registerData.Premises.recordset |sort(false, true, 'accountname') | groupby('accountnumber') %}
+                        <option value="{{accountnumber}}">{{accountname | truncate(30)}}</option>
                         {% endfor %}
-
-
+                        {% endfor %}
 
                     </select>
                 </div>
@@ -107,9 +108,11 @@ gc-header-hero
 
                         <option value="all">View all</option>
 
-                        {% for authority, i in list.premises.recordset |sort(false, true, 'localauthority') | groupby('localauthority') %}
-                        <option value="{{authority}}">{{authority | truncate(30)}}</option>
+                        {% for localauthority, i in registerData.Premises.recordset |sort(false, true, 'localauthority') | groupby('localauthority') %}
+                        <option value="{{localauthority}}">{{localauthority | truncate(30)}}</option>
                         {% endfor %}
+
+                  
 
 
 
@@ -130,17 +133,16 @@ gc-header-hero
 
                             {% set ord = 0 %}
 
+                            {% for premisesactivity, i in registerData.Premises.recordset |sort(false, true, 'premisesactivity') | groupby('premisesactivity') %}
 
+                            <div class="govuk-checkboxes__item">
+                                    <span class="gc-vertical-nav--count">{{i.length | numeral("0,0") }}</span>
+                           
+                                <input class="govuk-checkboxes__input" id="premisesactivity-{{ord}}" name="premisesactivity"
+                                    type="checkbox" value="{{premisesactivity}}">
+                                <label class="govuk-label govuk-checkboxes__label" for="premisesactivity-{{ord}}">
 
-                            {% for activity, i in list.premises.recordset |sort(false, true, 'activity') | groupby('activity') %}
-
-                            <div class="govuk-checkboxes__item"> <span
-                                    class="gc-pill gc-pull-right">{{i.length | numeral("0,0") }}</span>
-                                <input class="govuk-checkboxes__input" id="activity-{{ord}}" name="activity"
-                                    type="checkbox" value="{{activity}}">
-                                <label class="govuk-label govuk-checkboxes__label" for="activity-{{ord}}">
-
-                                    {{activity | truncate(20)}}
+                                    {{premisesactivity | truncate(20)}}
                                 </label> </div>
 
                             {% set ord = (ord + 1) %}
@@ -150,7 +152,7 @@ gc-header-hero
 
                         </div>
                     </fieldset>
-                </div>
+                </div> -->
 
                 <button type="submit" class="govuk-button">
                     Apply filter
@@ -164,39 +166,46 @@ gc-header-hero
     <div class="govuk-grid-column-two-thirds">
 
         <p class="govuk-body govuk-!-margin-bottom-2">
-            <span class="govuk-!-font-weight-bold">[x]</span>
+            <span class="govuk-!-font-weight-bold">{{registerData.Premises.recordset.length | numeral("0,0")}}</span>
             results</p>
         <hr class="govuk-section-break govuk-!-margin-bottom-4 govuk-!-margin-top-1 govuk-section-break--visible">
+
+        {% for i in registerData.Premises.recordset %}
 
         <div class="gc-search-result">
 
 
-                <p class="govuk-heading-s govuk-!-margin-bottom-2"><a href="/premises/detail/x"
-                    ga-on="click" ga-event-category="PremSearch" ga-event-action="Click"
-                    ga-event-label="{{ loop.index }}¬{{ loop.length }}¬{{i.id}}¬{{data['searchp']}}">[Address-line-1]</a>
-                </p>
+            <p class="govuk-heading-m govuk-!-margin-bottom-2"><a href="/premises/detail/{{ i.rowid}}" ga-on="click"
+                    ga-event-category="PremSearch" ga-event-action="Click"
+                    ga-event-label="{{ loop.index }}¬{{ loop.length }}¬{{i.id}}¬{{data['searchp']}}">{{i.addressline1}}</a>
+            </p>
 
-                <p class="govuk-body">
-                        [Address-line-2], [Address-town], [Address-postcode]</p>
-        
-                    <div class="govuk-grid-row govuk-!-margin-top-4">
-                        <div class="govuk-grid-column-full govuk-!-margin-bottom-1">
-                            <p class="govuk-heading-s govuk-!-margin-bottom-1">Premises type</p>
-                            <p class="govuk-body-s">[Premises-type]</p>
-                        </div>
-        
-                        <div class="govuk-grid-column-one-half govuk-!-margin-bottom-1">
-                            <p class="govuk-heading-s govuk-!-margin-bottom-1">Operated by</p>
-                            <p class="govuk-body-s govuk-!-margin-bottom-1"> [Operated-by]</p>
-                        </div>
-                        <div class="govuk-grid-column-one-half govuk-!-margin-bottom-1">
-                            <p class="govuk-heading-s  govuk-!-margin-bottom-1">Licensed by</p>
-                            <p class="govuk-body-s govuk-!-margin-bottom-1"> [Licensing-authority]</p>
-                        </div>
-                    </div>
+            <p class="govuk-body">
+                <address>
+                        {{i.addressline2 if i.addressline2 !== '' else ','}}
+                    {{i.city}}, {{i.postcode}}</address>
+            </p>
+       
+            <div class="govuk-grid-row govuk-!-margin-top-4">
+                <div class="govuk-grid-column-full govuk-!-margin-bottom-1">
+                    <p class="govuk-heading-s govuk-!-margin-bottom-1">Premises type</p>
+                    <p class="govuk-body-s">{{i.premisesactivity if i.premisesactivity !== null else 'Not available'}}</p>
+                </div>
+
+                <div class="govuk-grid-column-one-half govuk-!-margin-bottom-1">
+                    <p class="govuk-heading-s govuk-!-margin-bottom-1">Operated by</p>
+                    <p class="govuk-body-s govuk-!-margin-bottom-1">{{i.accountname if i.accountname !== null else 'Not available'}}</p>
+                </div>
+                <div class="govuk-grid-column-one-half govuk-!-margin-bottom-1">
+                    <p class="govuk-heading-s  govuk-!-margin-bottom-1">Licensed by</p>
+                    <p class="govuk-body-s govuk-!-margin-bottom-1">{{i.localauthority if i.localauthority !== null else 'Not available'}}</p>
+                </div>
+            </div>
 
 
         </div>
+
+        {% endfor %}
 
     </div>
 

@@ -18,9 +18,17 @@
                     </p>
     
                     <address class="govuk-body">
-                        {{hoAddress.AddressLine1}}, {% if hoAddress.AddressLine2 !== null %} {{hoAddress.AddressLine2}},
+
+                        {% if hoAddress.AddressLine1 === null or hoAddress.City === null %}
+                            Address not available
+                        {% else %}
+      {{hoAddress.AddressLine1}}, {% if hoAddress.AddressLine2 !== null %} {{hoAddress.AddressLine2}},
                         {% endif %}<br> {{hoAddress.City}},
                         {{hoAddress.Postcode}}, {{hoAddress.Country}}
+                        {% endif %}
+
+                        
+                     
                     </address>
                 </div>
             </div>

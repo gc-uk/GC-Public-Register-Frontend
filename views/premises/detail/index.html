@@ -30,7 +30,7 @@ Premises
 <div class="govuk-grid-row">
 
     <div class="govuk-grid-column-full"> 
-      <h1 class="govuk-heading-l">[Address-line1]</h1></div>
+      <h1 class="govuk-heading-l">{{registerData.Premises.recordset[0].AddressLine1}}</h1></div>
 
   <div class="govuk-grid-column-one-half">
 
@@ -38,10 +38,12 @@ Premises
 
     <p class="govuk-body">
       <address>
-        [Address-line1]<br>
-        [Address-line2]<br>
-        [City]<br>
-        [Postcode]
+          {{registerData.Premises.recordset[0].AddressLine1}}<br>
+          {% if registerData.Premises.recordset[0].AddressLine2 !== null%}
+          {{registerData.Premises.recordset[0].AddressLine2}}<br>
+          {% endif %}
+          {{registerData.Premises.recordset[0].City}}<br>
+          {{registerData.Premises.recordset[0].Postcode}}
       </address>
     </p>
 
@@ -55,20 +57,20 @@ Premises
       <p class="govuk-heading-s govuk-!-margin-bottom-0">
           Premises type
         </p>
-        <p class="govuk-body">[Premises-type]</p>
+        <p class="govuk-body">{{registerData.Premises.recordset[0].PremisesActivity}}</p>
     
     
         <p class="govuk-heading-s govuk-!-margin-bottom-0">
           Licensing authority
         </p>
-        <p class="govuk-body">[Licensing-authority]</p>
+        <p class="govuk-body">{{registerData.Premises.recordset[0].LocalAuthority}}</p>
     
     
         <p class="govuk-heading-s govuk-!-margin-bottom-0">
           Operated by
         </p>
         <p class="govuk-body">
-          <a href="/registers/business/details/x">[Operator-name]</a>
+          <a href="/business/detail/{{registerData.Premises.recordset[0].AccountNumber[0]}}">{{registerData.Premises.recordset[0].AccountName}}</a>
         </p>
 
   </div>

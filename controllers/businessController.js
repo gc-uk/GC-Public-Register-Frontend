@@ -67,24 +67,29 @@ exports.business_results_get = function (req, res) {
     currentURL = utils.getFullURL(req)
     let query = req.session.data['business-search']
 
-    const searchBusinessRegister = require('../data/azuresql/searchBusinessRegister');
-    let data = searchBusinessRegister(query);
-    var registerData = "";
+    if (query === '') {
+        res.redirect('/business/full')
+    } else {
 
-    data.then(result => {
-        registerData = result;
-        res.render("business/results", {
-            businessactive,
-            registerData
+        const searchBusinessRegister = require('../data/azuresql/searchBusinessRegister');
+        let data = searchBusinessRegister(query);
+        var registerData = "";
+
+        data.then(result => {
+            registerData = result;
+            res.render("business/results", {
+                businessactive,
+                registerData
+            });
+        }).catch(err => {
+            console.log(err);
         });
-    }).catch(err => {
-        console.log(err);
-    });
+    }
 
 }
 
 exports.business_domainnames_get = function (req, res) {
-  
+
     currentURL = utils.getFullURL(req)
     var query = req.params.id;
 
@@ -180,7 +185,21 @@ exports.business_download_get = function (req, res) {
 }
 
 exports.business_full_get = function (req, res) {
-    res.render("business/full", {
-        businessactive
+    currentURL = utils.getFullURL(req)
+    let query = req.session.data['business-search']
+
+    const fullBusinessRegister = require('../data/azuresql/getFullBusinessRegister');
+    let data = fullBusinessRegister();
+    var registerData = "";
+
+    data.then(result => {
+        registerData = result;
+        res.render("business/full", {
+            businessactive,
+            registerData
+        });
+    }).catch(err => {
+        console.log(err);
     });
+
 }

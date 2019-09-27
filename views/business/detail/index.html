@@ -55,7 +55,7 @@ Licences and activities held by {{account.AccountName}}
                     </li>
 
                     <li class="gc-vertical-nav__section-item">
-                        <span class="gc-vertical-nav--count">0</span>
+                        <span class="gc-vertical-nav--count">{{account.CountOfPremises  | numeral("0,0")}}</span>
                         <a class="gc-vertical-nav__link "
                             href="/business/detail/premises/{{account.AccountNumber}}">Premises</a>
                     </li>
@@ -134,7 +134,7 @@ Licences and activities held by {{account.AccountName}}
                         <tr class="govuk-table__row">
                             <td class="govuk-table__cell" scope="row">
 
-                                <a href="https://www.gamblingcommission.gov.uk/for-gambling-businesses/Do-I-need-a-licence/Operating-licences/Remote-bingo-operating-licence.aspx"
+                                <a href="/redirect/activity-info/{{activity.Activity}}-{{activity.Type}}"
                                     target="_Blank">{{activity.Activity}}</a>
 
                             </td>

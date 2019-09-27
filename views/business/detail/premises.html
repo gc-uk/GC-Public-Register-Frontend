@@ -50,8 +50,8 @@ List of premises for {{account.AccountName}}
                             href="/business/detail/domain-names/{{account.AccountNumber}}">Domain names</a>
                     </li>
 
-                    <li class="gc-vertical-nav__section-item gc-vertical-nav__section-item--current">
-                        <span class="gc-vertical-nav--count">0</span>
+                    <li class="gc-vertical-nav__section-item  gc-vertical-nav__section-item--current">
+                        <span class="gc-vertical-nav--count">{{account.CountOfPremises | numeral("0,0")}}</span>
                         <a class="gc-vertical-nav__link "
                             href="/business/detail/premises/{{account.AccountNumber}}">Premises</a>
                     </li>
@@ -82,9 +82,10 @@ List of premises for {{account.AccountName}}
                 </thead>
                 <tbody class="govuk-table__body  govuk-body-s">
                     {% for  i in registerData.premises.recordset %}
+               
                     <tr class="govuk-table__row">
                         <td class="govuk-table__cell" scope="row">
-                            <a href="/premises/detail/{{i.rowID}}"
+                            <a href="/premises/detail/{{i.RowID}}"
                                 class="govuk-!-margin-bottom-2">{{i.AddressLine1}}</a><br>{{i.AddressLine2}},
                             {{i.City | capitalize}}, {{i.Postcode}}</td>
                         <td class="govuk-table__cell" scope="row">

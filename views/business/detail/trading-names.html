@@ -49,7 +49,7 @@ List of trading names for {{account.AccountName}}
                             href="/business/detail/domain-names/{{account.AccountNumber}}">Domain names</a>
                     </li>
                     <li class="gc-vertical-nav__section-item">
-                        <span class="gc-vertical-nav--count">0</span>
+                        <span class="gc-vertical-nav--count">{{account.CountOfPremises | numeral("0,0") }}</span>
                         <a class="gc-vertical-nav__link "
                             href="/business/detail/premises/{{account.AccountNumber}}">Premises</a>
                     </li>
