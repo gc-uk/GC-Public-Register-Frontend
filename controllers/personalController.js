@@ -37,14 +37,44 @@ exports.personal_search_post = function (req, res) {
 }
 
 exports.personal_results_get = function (req, res) {
-    console.log('get results')
-    res.render("personal/results", {
-        personalactive
-    });
+    currentURL = utils.getFullURL(req)
+    let query = req.session.data['personal-search']
+
+    if (query === '') {
+        res.redirect('/personal/full')
+    } else {
+
+        const searchPersonalRegister = require('../data/azuresql/searchPersonalRegister');
+        let data = searchPersonalRegister(query);
+        var registerData = "";
+
+        data.then(result => {
+            registerData = result;
+            res.render("personal/results", {
+                personalactive,
+                registerData
+            });
+        }).catch(err => {
+            console.log(err);
+        });
+    }
 }
 
 exports.personal_full_get = function (req, res) {
-    res.render("personal/full", {
-        personalactive
+    currentURL = utils.getFullURL(req)
+    let query = req.session.data['personal-search']
+
+    const fullPersonalRegister = require('../data/azuresql/getFullPersonalRegister');
+    let data = fullPersonalRegister();
+    var registerData = "";
+
+    data.then(result => {
+        registerData = result;
+        res.render("personal/results", {
+            personalactive,
+            registerData
+        });
+    }).catch(err => {
+        console.log(err);
     });
 }

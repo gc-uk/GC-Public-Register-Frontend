@@ -28,8 +28,8 @@ gc-header-hero
                 <p class="govuk-body-l">Individuals who hold a personal licence allowing them to work in the gambling industry.</p>
 
                 <div class="gc-search">
-                    <form method="POST" action="search">
-                        <label for="search" class="govuk-label">
+                    <form method="GET" action="results">
+                        <label for="personal-search" class="govuk-label">
                             <p id="search-hint" class="govuk-body">
                                 Search by name, licence or account number
                             </p>
@@ -37,7 +37,7 @@ gc-header-hero
 
                         <div class="inner-form govuk-!-margin-bottom-3">
                             <div class="input-field second-wrap">
-                                <input id="search" name="search" type="text" placeholder="Search">
+                                <input id="personal-search" name="personal-search" type="text" placeholder="Search">
                             </div>
                             <div class="input-field third-wrap">
                                 <button class="btn-search" type="submit"><span class="govuk-visually-hidden">Search the personal

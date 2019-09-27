@@ -67,7 +67,7 @@ exports.premises_results_get = function (req, res) {
     currentURL = utils.getFullURL(req)
     let query = req.session.data['premises-search']
 
-    if (query === '') {
+    if (query === '') {       
         res.redirect('/premises/full')
     } else {
 
@@ -88,7 +88,19 @@ exports.premises_results_get = function (req, res) {
 }
 
 exports.premises_full_get = function (req, res) {
-    res.render("premises/full", {
-        premisesactive
+
+
+    const fullPremisesRegisterData = require('../data/azuresql/getFullPremisesRegister');
+    let data = fullPremisesRegisterData();
+    var registerData = "";
+
+    data.then(result => {
+        registerData = result;
+        res.render("premises/results", {
+            premisesactive,
+            registerData
+        });
+    }).catch(err => {
+        console.log(err);
     });
 }

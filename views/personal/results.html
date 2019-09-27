@@ -38,7 +38,7 @@ Search results for the register of personal licences
 
         <div class="gc-search gc-search--whitebg">
             <form method="POST" action="search">
-                <label for="search" class="govuk-label">
+                <label for="personal-search" class="govuk-label">
                     <p id="search-hint" class="govuk-body">
                         Search by name, licence or account number
                     </p>
@@ -46,7 +46,7 @@ Search results for the register of personal licences
 
                 <div class="inner-form govuk-!-margin-bottom-3">
                     <div class="input-field second-wrap">
-                        <input id="search" name="search" type="text" placeholder="Search">
+                        <input id="personal-search" name="personal-search" type="text" placeholder="Search" value="{{data['personal-search']}}">
                     </div>
                     <div class="input-field third-wrap">
                         <button class="btn-search" type="submit"><span class="govuk-visually-hidden">Search the gambling
@@ -76,7 +76,7 @@ Search results for the register of personal licences
 
     <div class="govuk-grid-column-one-third">
 
-        <form method="POST" action="full">
+        <form method="GET" action="results">
 
 
             <div class="gc-filters">
@@ -123,39 +123,38 @@ Search results for the register of personal licences
     <div class="govuk-grid-column-two-thirds">
 
         <p class="govuk-body govuk-!-margin-bottom-2">
-            <span class="govuk-!-font-weight-bold">[x]</span>
+            <span class="govuk-!-font-weight-bold">{{registerData.accounts.recordset.length | numeral("0,0")}}</span>
             results</p>
         <hr class="govuk-section-break govuk-!-margin-bottom-4 govuk-!-margin-top-1 govuk-section-break--visible">
 
+
+        {% for i in registerData.accounts.recordset %}
+
         <div class="gc-search-result">
 
-          
-            <p class="govuk-heading-s govuk-!-margin-bottom-2">
-                <a href="/personal/details/x" ga-on="click" ga-event-category="PLSearch"
+
+            <p class="govuk-heading-m govuk-!-margin-bottom-2">
+                <a href="/personal/detail/{{i.accountnumber}}" ga-on="click" ga-event-category="PLSearch"
                     ga-event-action="Click"
-                    ga-event-label="{{ loop.index }}¬{{ loop.length }}¬{{i.accountno}}¬{{data['search']}}">[Account-name]</a>
-
-
+                    ga-event-label="{{ loop.index }}¬{{ loop.length }}¬{{i.accountnumber}}¬{{data['personal-search']}}">{{i.IndividualFirstName}}
+                    {{i.IndividualLastName}}</a>
 
 
                 <div class="govuk-grid-row govuk-!-margin-top-4">
-                        <div class="govuk-grid-column-full govuk-!-margin-bottom-1">
-                                <p class="govuk-heading-s govuk-!-margin-bottom-1">Account number</p>
-                                <p class="govuk-body-s govuk-!-margin-bottom-1"> [Account-number]</p>
-                            </div>
                     <div class="govuk-grid-column-one-half govuk-!-margin-bottom-1">
-                        <p class="govuk-heading-s govuk-!-margin-bottom-1">Licensed for</p>
-                        <p class="govuk-body-s govuk-!-margin-bottom-1"> [Licenses-held]</p>
+                        <p class="govuk-heading-s govuk-!-margin-bottom-1">Account number</p>
+                        <p class="govuk-body-s govuk-!-margin-bottom-1">{{i.accountnumber}}</p>
                     </div>
+
                     <div class="govuk-grid-column-one-half govuk-!-margin-bottom-1">
                         <p class="govuk-heading-s  govuk-!-margin-bottom-1">Location</p>
-                        <p class="govuk-body-s govuk-!-margin-bottom-1"> [Location]</p>
+                        <p class="govuk-body-s govuk-!-margin-bottom-1">{{i.City}}</p>
                     </div>
                 </div>
 
 
         </div>
-
+        {% endfor %}
     </div>
 
 </div>
