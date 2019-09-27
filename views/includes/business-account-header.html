@@ -1,0 +1,30 @@
+<div class="govuk-grid-row">
+        <div class="govuk-grid-column-full">
+    
+            <h1 class="govuk-heading-l">{{account.AccountName}}</h1>
+            <div class="govuk-grid-row">
+                <div class="govuk-grid-column-one-third">
+                    <p class="govuk-heading-s govuk-!-margin-bottom-0">
+                        Account number
+                    </p>
+                    <p class="govuk-body">{{account.AccountNumber}}</p>
+    
+                </div>
+    
+    
+                <div class="govuk-grid-two-thirds">
+                    <p class="govuk-heading-s govuk-!-margin-bottom-0">
+                        Head office address
+                    </p>
+    
+                    <address class="govuk-body">
+                        {{hoAddress.AddressLine1}}, {% if hoAddress.AddressLine2 !== null %} {{hoAddress.AddressLine2}},
+                        {% endif %}<br> {{hoAddress.City}},
+                        {{hoAddress.Postcode}}, {{hoAddress.Country}}
+                    </address>
+                </div>
+            </div>
+    
+            <hr class="govuk-section-break govuk-section-break--visible gc-break govuk-!-margin-bottom-7">
+        </div>
+    </div>

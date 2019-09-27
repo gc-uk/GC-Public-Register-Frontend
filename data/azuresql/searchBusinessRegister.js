@@ -3,6 +3,8 @@ const sql = require('mssql');
 
 
 async function searchBusinessRegister(query) {
+    sql.close()
+    
     let sqlResult = {};
     await sql.connect(config)
 

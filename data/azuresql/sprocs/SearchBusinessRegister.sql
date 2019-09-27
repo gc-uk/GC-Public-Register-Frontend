@@ -1,14 +1,10 @@
 USE [publicregisters]
 GO
-
 /****** Object:  StoredProcedure [dbo].[SearchBusinessRegister]    Script Date: 26/09/2019 14:13:10 ******/
 SET ANSI_NULLS ON
 GO
-
 SET QUOTED_IDENTIFIER ON
 GO
-
-
 -- =============================================
 -- Author:		Andy Williams-Jones
 -- Create date: 26 September 2019
@@ -25,16 +21,11 @@ BEGIN
 	on dn.accountnumber = ac.accountnumber and ac.accounttype = 'Operator'
 	left join view_publicregister_tradingnames as tn
 	on tn.accountnumber = ac.accountnumber and ac.accounttype = 'Operator'
-	where ac.accountname like '%'+ @query +'%' 
+	where ac.accounttype = 'Operator' and ac.accountname like '%'+ @query +'%' 
 	or dn.domainname like '%'+ @query +'%' 
 	or tn.tradingname like '%'+ @query +'%' 
     or dn.domainname like '%'+ @strippedquery +'%' 
-	or tn.tradingname like '%'+ @strippedquery +'%' 
-	order by accountname asc
+	or tn.tradingname like '%'+ @strippedquery +'%'
+		order by accountname asc
 END
-
-
-
 GO
-
-

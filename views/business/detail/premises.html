@@ -1,66 +1,31 @@
 {% extends "layout.html" %}
 
+{% set account = registerData.account.recordset[0] %}
+{% set hoAddress = registerData.hoAddress.recordset[0] %}
+
 {% block pageTitle %}
-Premises
+Premises - {{account.AccountName}}
 {% endblock %}
 
 {% block pageDescription %}
-[Operator-name]
+List of premises for {{account.AccountName}}
 {% endblock %}
 
 {% block ogTitle %}
-[Operator-name]
+List of premises for {{account.AccountName}}
 {% endblock %}
 
-{% block heroClass %}
+{% block heroClass %}{% endblock %}
 
-{% endblock %}
-
-{% block heroContent %}
-
-
-
-{% endblock %}
+{% block heroContent %}{% endblock %}
 
 {% block beforeContent %}
-
 <a href="/business/" class="govuk-back-link">Back to the register of gambling businesses</a>
-
 {% endblock %}
-
 
 {% block content %}
 
-<div class="govuk-grid-row">
-    <div class="govuk-grid-column-full">
-
-        <h1 class="govuk-heading-l">[Operator-name]</h1>
-        <div class="govuk-grid-row">
-            <div class="govuk-grid-column-one-third">
-                <p class="govuk-heading-s govuk-!-margin-bottom-0">
-                    Account number
-                </p>
-                <p class="govuk-body">[Account-number]</p>
-
-            </div>
-
-
-            <div class="govuk-grid-two-thirds">
-                <p class="govuk-heading-s govuk-!-margin-bottom-0">
-                    Head office address
-                </p>
-
-
-                <address class="govuk-body">
-                    [Address-line1], [Address-line2], [Address-City]<br>
-                    [Address-country], [Address-country]
-                </address>
-            </div>
-        </div>
-
-        <hr class="govuk-section-break govuk-section-break--visible gc-break govuk-!-margin-bottom-7">
-    </div>
-</div>
+{% include "../../includes/business-account-header.html" %}
 
 <div class="govuk-grid-row">
 
@@ -70,82 +35,68 @@ Premises
             <nav class="gc-vertical-nav">
                 <ul class="gc-vertical-nav__section">
 
-                        <li class="gc-vertical-nav__section-item">
-                                <a class="gc-vertical-nav__link " href="/business/detail/x">Licence summary</a>
-                            </li>
-                            <li class="gc-vertical-nav__section-item">
-                                <span class="gc-vertical-nav--count">0</span>
-                                <a class="gc-vertical-nav__link " href="/business/detail/trading-names/x">Trading names</a>
-                            </li>
-                            <li class="gc-vertical-nav__section-item">
-                                <span class="gc-vertical-nav--count">0</span>
-                                <a class="gc-vertical-nav__link " href="/business/detail/domain-names/x">Domain names</a>
-                            </li>
-        
-                            <li class="gc-vertical-nav__section-item gc-vertical-nav__section-item--current">
-                                <span class="gc-vertical-nav--count">0</span>
-                                <a class="gc-vertical-nav__link " href="/business/detail/premises/x">Premises</a>
-                            </li>
+                    <li class="gc-vertical-nav__section-item">
+                        <a class="gc-vertical-nav__link " href="/business/detail/{{account.AccountNumber}}">Licence
+                            summary</a>
+                    </li>
+                    <li class="gc-vertical-nav__section-item">
+                        <span class="gc-vertical-nav--count">{{account.TradingNameCount}}</span>
+                        <a class="gc-vertical-nav__link "
+                            href="/business/detail/trading-names/{{account.AccountNumber}}">Trading names</a>
+                    </li>
+                    <li class="gc-vertical-nav__section-item">
+                        <span class="gc-vertical-nav--count">{{account.DomainNameCount}}</span>
+                        <a class="gc-vertical-nav__link "
+                            href="/business/detail/domain-names/{{account.AccountNumber}}">Domain names</a>
+                    </li>
+
+                    <li class="gc-vertical-nav__section-item gc-vertical-nav__section-item--current">
+                        <span class="gc-vertical-nav--count">0</span>
+                        <a class="gc-vertical-nav__link "
+                            href="/business/detail/premises/{{account.AccountNumber}}">Premises</a>
+                    </li>
                 </ul>
             </nav>
         </div>
 
         <div class="app-pane__content">
-
             <h2 class="govuk-heading-m">
                 Premises
             </h2>
-
             <div class="govuk-inset-text govuk-!-margin-top-0 govuk-!-margin-bottom-3">
-                You can use the <a href="/premises/full">premises register</a> to filter premises by area, licensing authority and more.
-             </div>
-
-
-
-
-
+                You can use the <a href="/premises/full">premises register</a> to filter premises by area, licensing
+                authority and more.
+            </div>
+            {% if registerData.premises.recordset.length === 0 %}
+            <div class="govuk-inset-text">
+                <p class="govuk-body">No premises for this business</p>
+            </div>
+            {% else %}
             <table class="govuk-table">
-
                 <thead class="govuk-table__head">
-                    <tr class="govuk-table__row govuk-body-s">
+                    <tr class="govuk-table__row">
                         <th class="govuk-table__header" scope="col">Address</th>
-                        <th class="govuk-table__header" scope="col">
-                            Authority</th>
-                        <th class="govuk-table__header govuk-table__header--numeric  gc-text-right" scope="col">
-                            Type of premises</th>
+                        <th class="govuk-table__header" scope="col">Authority</th>
+                        <th class="govuk-table__header" scope="col">Activity</th>
                     </tr>
                 </thead>
-
-
-
                 <tbody class="govuk-table__body  govuk-body-s">
-
+                    {% for  i in registerData.premises.recordset %}
                     <tr class="govuk-table__row">
                         <td class="govuk-table__cell" scope="row">
-                            <a href="/registers/premises/details/x">[Address-line1]</a><br>
-                            [Address-line2], [City], [Postcode]
-                        </td>
-                        <td class="govuk-table__cell">
-                            <div class="">[Licensing-authority]</div>
-                        </td>
-                        <td class="govuk-table__cell govuk-table__cell--numeric gc-text-right">
-                            <div class="">[Premises-type]</div>
-                        </td>
-
+                            <a href="/premises/detail/{{i.rowID}}"
+                                class="govuk-!-margin-bottom-2">{{i.AddressLine1}}</a><br>{{i.AddressLine2}},
+                            {{i.City | capitalize}}, {{i.Postcode}}</td>
+                        <td class="govuk-table__cell" scope="row">
+                            {{i.LocalAuthority if i.LocalAuthority !== 'NULL' else 'NOT AVAILABLE'}}</td>
+                        <td class="govuk-table__cell" scope="row">
+                            {{i.PremisesActivity if i.PremisesActivity !== 'NULL' else 'NOT AVAILABLE'}}</td>
                     </tr>
-
-
-
+                    {% endfor %}
                 </tbody>
-
             </table>
-
-
-
-
-
+            {% endif %}
         </div>
-
     </div>
 </div>
 {% endblock %}

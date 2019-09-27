@@ -5,3 +5,12 @@
 address {
     font-style: normal;
 }
+
+.licence-Revoked {background: #d4351c;}
+.licence-Active  {background: #00703c;}
+.licence-Spoiled {background: #1d70b8;}
+.licence-Superseded {background: #1d70b8;}
+.licence-Forfeited {background: #d4351c;}
+.licence-Suspended {background: #d4351c;}
+.licence-Surrendered {background: #d4351c;}
+.licence-Lapsed {background: #d4351c;}

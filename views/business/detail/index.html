@@ -1,15 +1,17 @@
 {% extends "layout.html" %}
 
+{% set account = registerData.account.recordset[0] %}
+{% set hoAddress = registerData.hoAddress.recordset[0] %}
+
 {% block pageTitle %}
-[Operator-name]
+Licence summary - {{account.AccountName}}
 {% endblock %}
 
 {% block pageDescription %}
-[Operator-name]
+Licences and activities held by {{account.AccountName}}
 {% endblock %}
 
-{% block ogTitle %}
-[Operator-name]
+{% block ogTitle %}Licences and activities held by {{account.AccountName}}
 {% endblock %}
 
 {% block heroClass %}
@@ -27,36 +29,7 @@
 
 {% block content %}
 
-<div class="govuk-grid-row">
-    <div class="govuk-grid-column-full">
-
-        <h1 class="govuk-heading-l">[Operator-name]</h1>
-        <div class="govuk-grid-row">
-            <div class="govuk-grid-column-one-third">
-                <p class="govuk-heading-s govuk-!-margin-bottom-0">
-                    Account number
-                </p>
-                <p class="govuk-body">[Account-number]</p>
-
-            </div>
-
-
-            <div class="govuk-grid-two-thirds">
-                <p class="govuk-heading-s govuk-!-margin-bottom-0">
-                    Head office address
-                </p>
-
-
-                <address class="govuk-body">
-                    [Address-line1], [Address-line2], [Address-City]<br>
-                    [Address-postcode], [Address-country]
-                </address>
-            </div>
-        </div>
-
-        <hr class="govuk-section-break govuk-section-break--visible gc-break govuk-!-margin-bottom-7">
-    </div>
-</div>
+{% include "../../includes/business-account-header.html" %}
 
 <div class="govuk-grid-row">
 
@@ -67,20 +40,24 @@
                 <ul class="gc-vertical-nav__section">
 
                     <li class="gc-vertical-nav__section-item gc-vertical-nav__section-item--current">
-                        <a class="gc-vertical-nav__link " href="/business/detail/x">Licence summary</a>
+                        <a class="gc-vertical-nav__link " href="/business/detail/{{account.AccountNumber}}">Licence
+                            summary</a>
                     </li>
                     <li class="gc-vertical-nav__section-item">
-                        <span class="gc-vertical-nav--count">0</span>
-                        <a class="gc-vertical-nav__link " href="/business/detail/trading-names/x">Trading names</a>
+                        <span class="gc-vertical-nav--count">{{account.TradingNameCount}}</span>
+                        <a class="gc-vertical-nav__link "
+                            href="/business/detail/trading-names/{{account.AccountNumber}}">Trading names</a>
                     </li>
                     <li class="gc-vertical-nav__section-item">
-                        <span class="gc-vertical-nav--count">0</span>
-                        <a class="gc-vertical-nav__link " href="/business/detail/domain-names/x">Domain names</a>
+                        <span class="gc-vertical-nav--count">{{account.DomainNameCount}}</span>
+                        <a class="gc-vertical-nav__link "
+                            href="/business/detail/domain-names/{{account.AccountNumber}}">Domain names</a>
                     </li>
 
                     <li class="gc-vertical-nav__section-item">
                         <span class="gc-vertical-nav--count">0</span>
-                        <a class="gc-vertical-nav__link " href="/business/detail/premises/x">Premises</a>
+                        <a class="gc-vertical-nav__link "
+                            href="/business/detail/premises/{{account.AccountNumber}}">Premises</a>
                     </li>
                 </ul>
             </nav>
@@ -92,46 +69,47 @@
                 Licence summary
             </h2>
 
-
+            {% for i in registerData.licences.recordset %}
             <div class="govuk-inset-text govuk-!-margin-top-0" style="padding-top:1px;">
 
 
-                <div class="gc-search-result gc-search-result--header">
-                    <span class="govuk-tag gc-tag--active gc-pull-right">
-                        <span class="govuk-visually-hidden">[Licence-type] licence status </span>[Licence-status]
+                <div class="gc-search-result gc-search-result--header  govuk-!-margin-bottom-0">
+                    <span class="govuk-tag gc-pull-right licence-{{ i.Status}}">
+                        <span class="govuk-visually-hidden">{{ i.Status}} licence status </span>{{ i.Status}}
                     </span>
 
                     <p class="govuk-heading-m govuk-!-margin-bottom-2">
-                        [Licence-type] licence</p>
-                    <p class="govuk-!-margin-bottom-2 govuk-body-s">Licence number: [Licence-number]</p>
+                        {{ i.Type}} licence</p>
+                    <p class="govuk-!-margin-bottom-2 govuk-body-s">Licence number: {{ i.LicenceNumber}}
+                        <details class="govuk-details govuk-!-margin-bottom-1">
+                            <summary class="govuk-details__summary">
+                                <span class="govuk-details__summary-text">
+                                    What is a {{ i.Type | lower}} licence?
+                                </span>
+                            </summary>
+                            <div class="govuk-details__text govuk-body-s">
+                                {% if i.Type === 'Non-Remote'%}
+                                <p>A non-remote licence is required for physical, land-based gambling, for example,
+                                    bookmakers, betting shops, arcades and casinos.</p>
+                                {% endif %}
 
-                    <details class="govuk-details govuk-!-margin-bottom-1">
-                        <summary class="govuk-details__summary">
-                            <span class="govuk-details__summary-text">
-                                What is a [Licence-type] licence?
-                            </span>
-                        </summary>
-                        <div class="govuk-details__text govuk-body-s">
-                            {% if licence.Type === 'Non-Remote'%}
-                            <p>A non-remote licence is required for physical, land-based gambling, for example,
-                                bookmakers, betting shops, arcades and casinos.</p>
-                            {% endif %}
-
-                            {% if licence.Type === 'Remote'%}
-                            <p> Regardless of where you are based in the world, you need a licence from us if:</p>
-                            <ul class="govuk-list govuk-list--bullet">
-                                <li>you are providing facilities for gambling to consumers in Great Britain online (or
-                                    through any other means of remote communication)</li>
-                                <li> any part of your remote gambling equipment is based in Great Britain. </li>
-                            </ul>
-                            {% endif %}
-                            {% if licence.Type === 'Ancillary Remote'%}
-                            <p>Authorises the licensee to provide facilities for single premises gaming by means of
-                                remote communication equipment that is situated entirely on the set of premises on which
-                                the gaming takes place</p>
-                            {% endif %}
-                        </div>
-                    </details>
+                                {% if i.Type === 'Remote'%}
+                                <p> Regardless of where you are based in the world, you need a licence from us if:</p>
+                                <ul class="govuk-list govuk-list--bullet">
+                                    <li>you are providing facilities for gambling to consumers in Great Britain online
+                                        (or
+                                        through any other means of remote communication)</li>
+                                    <li> any part of your remote gambling equipment is based in Great Britain. </li>
+                                </ul>
+                                {% endif %}
+                                {% if i.Type === 'Ancillary Remote'%}
+                                <p>Authorises the licensee to provide facilities for single premises gaming by means of
+                                    remote communication equipment that is situated entirely on the set of premises on
+                                    which
+                                    the gaming takes place</p>
+                                {% endif %}
+                            </div>
+                        </details>
 
                 </div>
 
@@ -149,21 +127,25 @@
 
                     <tbody class="govuk-table__body  govuk-body-s">
 
+                        {% for activity in registerData.licenceActivities.recordset %}
+
+                        {% if activity.LicenceNumber === i.LicenceNumber %}
+
                         <tr class="govuk-table__row">
                             <td class="govuk-table__cell" scope="row">
 
-
                                 <a href="https://www.gamblingcommission.gov.uk/for-gambling-businesses/Do-I-need-a-licence/Operating-licences/Remote-bingo-operating-licence.aspx"
-                                    target="_Blank">[Product-name]</a>
-
-
+                                    target="_Blank">{{activity.Activity}}</a>
 
                             </td>
                             <td class="govuk-table__cell govuk-table__cell--numeric gc-text-right">
-                                <div class="">[From-date]</div>
+                                <div class="">{{activity.Start | date('DD MMM YYYY') }}</div>
                             </td>
 
                         </tr>
+
+                        {% endif %}
+                        {% endfor %}
 
 
 
@@ -171,8 +153,10 @@
 
                 </table>
 
-            </div>
 
+
+            </div>
+            {% endfor %}
 
 
         </div>

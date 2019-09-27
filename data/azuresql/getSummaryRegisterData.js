@@ -3,6 +3,7 @@ const sql = require('mssql');
 
 
 async function getSummaryRegisterData(query) {
+    sql.close()
     let sqlResult = {};
     await sql.connect(config)
 

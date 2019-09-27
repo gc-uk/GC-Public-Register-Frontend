@@ -20,9 +20,34 @@ exports.business_home_get = function (req, res) {
 }
 
 exports.business_details_get = function (req, res) {
-    res.render("business/detail/index", {
-        businessactive
-    });
+
+    currentURL = utils.getFullURL(req)
+    var query = req.params.id;
+
+    if (isNaN(query)) {
+        res.redirect('/')
+    } else {
+
+        const accountData = require('../data/azuresql/getaccountdata');
+        let data = accountData(query);
+        var registerData = "";
+
+        data.then(result => {
+            if (result.account.recordset.length === 0) {
+                res.redirect('/')
+            } else {
+                registerData = result;
+                res.render("business/detail/index", {
+                    businessactive,
+                    registerData
+                });
+            }
+
+        }).catch(err => {
+            res.redirect('/')
+        });
+    }
+
 }
 
 exports.business_download_get = function (req, res) {
@@ -59,21 +84,93 @@ exports.business_results_get = function (req, res) {
 }
 
 exports.business_domainnames_get = function (req, res) {
-    res.render("business/detail/domain-names", {
-        businessactive
-    });
+  
+    currentURL = utils.getFullURL(req)
+    var query = req.params.id;
+
+    if (isNaN(query)) {
+        res.redirect('/')
+    } else {
+
+        const accountData = require('../data/azuresql/getBusinessDomainNameData');
+        let data = accountData(query);
+        var registerData = "";
+
+        data.then(result => {
+            if (result.account.recordset.length === 0) {
+                res.redirect('/')
+            } else {
+                registerData = result;
+                res.render("business/detail/domain-names", {
+                    businessactive,
+                    registerData
+                });
+            }
+
+        }).catch(err => {
+            console.log(err)
+            res.redirect('/')
+        });
+    }
 }
 
 exports.business_tradingnames_get = function (req, res) {
-    res.render("business/detail/trading-names", {
-        businessactive
-    });
+    currentURL = utils.getFullURL(req)
+    var query = req.params.id;
+
+    if (isNaN(query)) {
+        res.redirect('/')
+    } else {
+
+        const accountData = require('../data/azuresql/getBusinessTradingNameData');
+        let data = accountData(query);
+        var registerData = "";
+
+        data.then(result => {
+            if (result.account.recordset.length === 0) {
+                res.redirect('/')
+            } else {
+                registerData = result;
+                res.render("business/detail/trading-names", {
+                    businessactive,
+                    registerData
+                });
+            }
+
+        }).catch(err => {
+            res.redirect('/')
+        });
+    }
 }
 
 exports.business_premises_get = function (req, res) {
-    res.render("business/detail/premises", {
-        businessactive
-    });
+    currentURL = utils.getFullURL(req)
+    var query = req.params.id;
+
+    if (isNaN(query)) {
+        res.redirect('/')
+    } else {
+
+        const accountData = require('../data/azuresql/getBusinessPremisesData');
+        let data = accountData(query);
+        var registerData = "";
+
+        data.then(result => {
+            if (result.account.recordset.length === 0) {
+                res.redirect('/')
+            } else {
+                registerData = result;
+                res.render("business/detail/premises", {
+                    businessactive,
+                    registerData
+                });
+            }
+
+        }).catch(err => {
+            console.log(err)
+            res.redirect('/')
+        });
+    }
 }
 
 exports.business_download_get = function (req, res) {
