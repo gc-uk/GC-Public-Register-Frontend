@@ -176,8 +176,8 @@ gc-header-hero
 
 
             <p class="govuk-heading-m govuk-!-margin-bottom-2"><a href="/premises/detail/{{ i.rowid}}" ga-on="click"
-                    ga-event-category="PremSearch" ga-event-action="Click"
-                    ga-event-label="{{ loop.index }}¬{{ loop.length }}¬{{i.id}}¬{{data['searchp']}}">{{i.addressline1}}</a>
+                    ga-event-category="Premises Search" ga-event-action="Click"
+                    ga-event-label="{{ loop.index }}¬{{ loop.length }}¬{{i.addressline1}} {{i.addressline2}} {{i.city}} {{i.postcode}}¬{{data['premises-search']}}">{{i.addressline1}}</a>
             </p>
 
             <p class="govuk-body">

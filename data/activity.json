@@ -25,7 +25,9 @@
         },
         {
             "activity": "Casino-Remote",
-            "url": "https://www.gamblingcommission.gov.uk/for-gambling-businesses/Do-I-need-a-licence/Operating-licences/Remote-casino-operating-licence.aspx"
+            "url": "https://www.gamblingcommission.gov.uk/for-gambling-businesses/Do-I-need-a-licence/Operating-licences/Remote-casino-operating-licence.aspx",
+            "type": "Non-Remote",
+            "act": "Casino"       
         },
         {
             "activity": "Bingo-Remote",
@@ -57,7 +59,9 @@
         },
         {
             "activity": "Casino 1968 Act-Non-Remote",
-            "url": "https://www.gamblingcommission.gov.uk/for-gambling-businesses/Do-I-need-a-licence/Operating-licences/Non-remote-1968-Act-casino-operating-licence.aspx"
+            "url": "https://www.gamblingcommission.gov.uk/for-gambling-businesses/Do-I-need-a-licence/Operating-licences/Non-remote-1968-Act-casino-operating-licence.aspx",
+            "type": "Non-Remote",
+            "act": "Casino 1968 Act"
         },
         {
             "activity": "Gaming Machine General Adult Gaming Centre-Non-Remote",

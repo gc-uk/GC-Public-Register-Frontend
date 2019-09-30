@@ -130,13 +130,15 @@ Search results for the register of personal licences
 
         {% for i in registerData.accounts.recordset %}
 
+       
+
         <div class="gc-search-result">
 
 
             <p class="govuk-heading-m govuk-!-margin-bottom-2">
-                <a href="/personal/detail/{{i.accountnumber}}" ga-on="click" ga-event-category="PLSearch"
+                <a href="/personal/detail/{{i.accountnumber}}" ga-on="click" ga-event-category="Personal Search"
                     ga-event-action="Click"
-                    ga-event-label="{{ loop.index }}¬{{ loop.length }}¬{{i.accountnumber}}¬{{data['personal-search']}}">{{i.IndividualFirstName}}
+                    ga-event-label="{{ loop.index }}¬{{ loop.length }}¬{{i.accountnumber}} {{i.IndividualFirstName}} {{i.IndividualLastName}}¬{{data['personal-search']}}">{{i.IndividualFirstName}}
                     {{i.IndividualLastName}}</a>
 
 

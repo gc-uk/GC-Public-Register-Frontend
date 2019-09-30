@@ -63,12 +63,9 @@ List of premises for {{account.AccountName}}
             <h2 class="govuk-heading-m">
                 Premises
             </h2>
-            <div class="govuk-inset-text govuk-!-margin-top-0 govuk-!-margin-bottom-3">
-                You can use the <a href="/premises/full">premises register</a> to filter premises by area, licensing
-                authority and more.
-            </div>
+          
             {% if registerData.premises.recordset.length === 0 %}
-            <div class="govuk-inset-text">
+            <div class="govuk-inset-text  govuk-!-margin-top-0">
                 <p class="govuk-body">No premises for this business</p>
             </div>
             {% else %}

@@ -23,6 +23,7 @@ exports.business_details_get = function (req, res) {
 
     currentURL = utils.getFullURL(req)
     var query = req.params.id;
+    const externalLinks = require('../data/activity.json');
 
     if (isNaN(query)) {
         res.redirect('/')
@@ -39,7 +40,8 @@ exports.business_details_get = function (req, res) {
                 registerData = result;
                 res.render("business/detail/index", {
                     businessactive,
-                    registerData
+                    registerData,
+                    externalLinks
                 });
             }
 
@@ -51,8 +53,26 @@ exports.business_details_get = function (req, res) {
 }
 
 exports.business_download_get = function (req, res) {
+    var fs = require("fs"); //Load the filesystem module
+    var stats = fs.statSync("./public/business-licence-register.xlsx")
+    var fileSizeInBytes = stats["size"]
+    var ctime = stats["ctime"];
+
+    var divideForKbOrMb = 1000;
+    var mborkb = "kb";
+
+    if (fileSizeInBytes > 1000000) {
+        divideForKbOrMb = 1000000;
+        mborkb = "mb";
+    }
+
+    var fileSizeInMegabytes = Math.round(fileSizeInBytes / divideForKbOrMb)
+
     res.render("business/download", {
-        businessactive
+        businessactive,
+        fileSizeInMegabytes,
+        ctime,
+        mborkb
     });
 }
 
@@ -66,13 +86,36 @@ exports.business_results_get = function (req, res) {
 
     currentURL = utils.getFullURL(req)
     let query = req.session.data['business-search']
+    let filter = req.session.data['sector']
 
-    if (query === '') {
-        res.redirect('/business/full')
+    console.log(query);
+
+    if (filter !== undefined && !Array.isArray(filter)) {
+        filter = Array.of(filter)
+    }
+
+    console.log(filter);
+
+    if (query === '' && filter === undefined) {
+
+        const fullBusinessRegister = require('../data/azuresql/getFullBusinessRegister');
+        let data = fullBusinessRegister();
+        var registerData = "";
+
+        data.then(result => {
+            registerData = result;
+            res.render("business/full", {
+                businessactive,
+                registerData
+            });
+        }).catch(err => {
+            console.log(err);
+        });
+
     } else {
 
         const searchBusinessRegister = require('../data/azuresql/searchBusinessRegister');
-        let data = searchBusinessRegister(query);
+        let data = searchBusinessRegister(query, filter);
         var registerData = "";
 
         data.then(result => {
@@ -179,14 +222,37 @@ exports.business_premises_get = function (req, res) {
 }
 
 exports.business_download_get = function (req, res) {
+    var fs = require("fs"); //Load the filesystem module
+    var stats = fs.statSync("./public/business-licence-register.xlsx")
+    var fileSizeInBytes = stats["size"]
+    var ctime = stats["ctime"];
+
+    var divideForKbOrMb = 1000;
+    var mborkb = "kb";
+
+    if (fileSizeInBytes > 1000000) {
+        divideForKbOrMb = 1000000;
+        mborkb = "mb";
+    }
+
+    var fileSizeInMegabytes = Math.round(fileSizeInBytes / divideForKbOrMb)
+
     res.render("business/download", {
-        businessactive
+        businessactive,
+        fileSizeInMegabytes,
+        ctime,
+        mborkb
     });
 }
 
 exports.business_full_get = function (req, res) {
     currentURL = utils.getFullURL(req)
     let query = req.session.data['business-search']
+
+    let filter = req.session.data['sector']
+
+    console.log(query);
+    console.log(filter);
 
     const fullBusinessRegister = require('../data/azuresql/getFullBusinessRegister');
     let data = fullBusinessRegister();

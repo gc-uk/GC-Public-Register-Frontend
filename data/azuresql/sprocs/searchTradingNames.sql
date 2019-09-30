@@ -1,11 +1,13 @@
 USE [publicregisters]
 GO
 
+/****** Object:  StoredProcedure [dbo].[SearchTradingNames]    Script Date: 30/09/2019 15:17:38 ******/
 SET ANSI_NULLS ON
 GO
 
 SET QUOTED_IDENTIFIER ON
 GO
+
 
 
 -- =============================================
@@ -27,4 +29,7 @@ END
 
 
 
+
 GO
+
+

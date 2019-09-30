@@ -17,6 +17,8 @@ router.post('/feedback', homeController.feedback_post);
 router.get('/feedback-thanks', homeController.feedback_thanks_get);
 router.get('/performance', homeController.performance_get);
 router.get('/redirect/activity-info/:id', homeController.redirectForActivity_get);
+router.get('/dailyget', homeController.daily_get);
+
 
 // BUSINESS
 // Gets

@@ -134,8 +134,16 @@ Licences and activities held by {{account.AccountName}}
                         <tr class="govuk-table__row">
                             <td class="govuk-table__cell" scope="row">
 
-                                <a href="/redirect/activity-info/{{activity.Activity}}-{{activity.Type}}"
-                                    target="_Blank">{{activity.Activity}}</a>
+
+                                {% for link in externalLinks.activities %}
+
+                                {% if link.activity === activity.Activity+"-"+activity.Type %}
+
+                                <a href="{{link.url}}" target="_Blank">{{activity.Activity}}</a>
+
+                                {% endif %}
+
+                                {% endfor %}
 
                             </td>
                             <td class="govuk-table__cell govuk-table__cell--numeric gc-text-right">

@@ -1,12 +1,13 @@
 USE [publicregisters]
 GO
 
-/****** Object:  StoredProcedure [dbo].[SearchBusinessRegister]    Script Date: 27/09/2019 12:21:00 ******/
+/****** Object:  StoredProcedure [dbo].[SearchBusinessRegister]    Script Date: 30/09/2019 15:16:22 ******/
 SET ANSI_NULLS ON
 GO
 
 SET QUOTED_IDENTIFIER ON
 GO
+
 
 
 
@@ -21,7 +22,7 @@ CREATE PROCEDURE [dbo].[SearchBusinessRegister]
 AS
 BEGIN
 	SET NOCOUNT ON;
-	SELECT distinct(ac.accountnumber), ac.accountname from view_publicregister_accounts as ac
+	SELECT distinct(ac.accountnumber), ac.accountname, ac.accounttype from view_publicregister_accounts as ac
 	left join view_publicregister_domainnames as dn 
 	on dn.accountnumber = ac.accountnumber and ac.accounttype = 'Operator'
 	left join view_publicregister_tradingnames as tn
@@ -31,9 +32,14 @@ BEGIN
 	or tn.tradingname like '%'+ @query +'%' 
     or dn.domainname like '%'+ @strippedquery +'%' 
 	or tn.tradingname like '%'+ @strippedquery +'%'
-	or ac.accountnumber = @query
-		order by accountname asc
+	or ac.accountnumber like '%'+ @query +'%'
+	order by accountname asc
 END
+
+
+
+
+
 
 
 

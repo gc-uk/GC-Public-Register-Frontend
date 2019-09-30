@@ -51,8 +51,28 @@ exports.premises_details_get = function (req, res) {
 }
 
 exports.premises_download_get = function (req, res) {
+
+    var fs = require("fs"); //Load the filesystem module
+    var stats = fs.statSync("./public/gambling-premises-register.xlsx")
+    var fileSizeInBytes = stats["size"]
+    var ctime = stats["ctime"];
+
+    var divideForKbOrMb = 1000;
+    var mborkb = "kb";
+
+    if (fileSizeInBytes > 1000000) {
+        divideForKbOrMb = 1000000;
+        mborkb = "mb";
+    }
+
+    var fileSizeInMegabytes = Math.round(fileSizeInBytes / divideForKbOrMb)
+
+
     res.render("premises/download", {
-        premisesactive
+        premisesactive,
+        fileSizeInMegabytes,
+        ctime,
+        mborkb
     });
 }
 
@@ -67,7 +87,7 @@ exports.premises_results_get = function (req, res) {
     currentURL = utils.getFullURL(req)
     let query = req.session.data['premises-search']
 
-    if (query === '') {       
+    if (query === '') {
         res.redirect('/premises/full')
     } else {
 

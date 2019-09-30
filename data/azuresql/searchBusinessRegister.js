@@ -2,13 +2,15 @@ var config = require('./config');
 const sql = require('mssql');
 
 
-async function searchBusinessRegister(query) {
+async function searchBusinessRegister(query, filter) {
     sql.close()
     
     let sqlResult = {};
     await sql.connect(config)
 
-    let a = getData(query);
+    console.log(filter)
+
+    let a = getData(query, filter);
     let b = getDomainNames(query);
     let c = getTradingNames(query);
 
@@ -20,9 +22,9 @@ async function searchBusinessRegister(query) {
     return sqlResult;
 }
 
-async function getData(query) {
+async function getData(query, filter) {
     var strippedQuery = query.replace(/\s/g, '');
-    try {
+    try {        
         return await sql.query("EXEC SearchBusinessRegister @query = '" + query + "', @strippedquery = '" + strippedQuery + "'");
     } catch (err) {
         console.log(err);

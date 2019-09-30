@@ -1,7 +1,7 @@
 USE [publicregisters]
 GO
 
-/****** Object:  StoredProcedure [dbo].[GetHeadOfficeAddressData]    Script Date: 26/09/2019 22:00:16 ******/
+/****** Object:  StoredProcedure [dbo].[GetHeadOfficeAddressData]    Script Date: 30/09/2019 15:14:25 ******/
 SET ANSI_NULLS ON
 GO
 

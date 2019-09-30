@@ -1,7 +1,7 @@
 USE [publicregisters]
 GO
 
-/****** Object:  StoredProcedure [dbo].[GetDomains]    Script Date: 30/09/2019 15:13:40 ******/
+/****** Object:  StoredProcedure [dbo].[GetPremises]    Script Date: 30/09/2019 15:15:25 ******/
 SET ANSI_NULLS ON
 GO
 
@@ -10,20 +10,25 @@ GO
 
 
 
+
+
 -- =============================================
 -- Author:		Andy Williams-Jones
 -- Create date: 27 September 2019
--- Description:	Get domains for business
+-- Description:	Get premises for business
 -- =============================================
-CREATE PROCEDURE [dbo].[GetDomains] 
+CREATE PROCEDURE [dbo].[GetPremises] 
 	@query int
 AS
 BEGIN
 	SET NOCOUNT ON;
-	SELECT * from view_publicregister_domainnames
-	where accountnumber = @query
+	SELECT * from addresses
+	where AddressType = 'Licensed Premise'
+	and accountnumber = @query 
 	
 END
+
+
 
 
 

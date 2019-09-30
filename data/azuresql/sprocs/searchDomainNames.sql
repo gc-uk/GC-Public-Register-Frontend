@@ -1,11 +1,13 @@
 USE [publicregisters]
 GO
 
+/****** Object:  StoredProcedure [dbo].[SearchDomainNames]    Script Date: 30/09/2019 15:16:32 ******/
 SET ANSI_NULLS ON
 GO
 
 SET QUOTED_IDENTIFIER ON
 GO
+
 
 -- =============================================
 -- Author:		Andy Williams-Jones
@@ -23,6 +25,7 @@ BEGIN
 	or domainname like '%' + @strippedQuery + '%' 
 	order by domainname asc
 END
+
 
 
 GO

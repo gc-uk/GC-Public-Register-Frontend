@@ -76,7 +76,7 @@ List of domain names for {{account.AccountName}}
     
             {% if registerData.domainNames.recordset.length === 0 %}
 
-            <div class="govuk-inset-text">
+            <div class="govuk-inset-text govuk-!-margin-top-0">
                 <p class="govuk-body">No domain names for this business</p>
             </div>
             {% endif %}
@@ -105,7 +105,7 @@ List of domain names for {{account.AccountName}}
                 <tbody class="govuk-table__body  govuk-body-s">
                     {% for name in i %}
                     <tr class="govuk-table__row">
-                        <td class="govuk-table__cell" scope="row">{{name.DomainName}}</td>
+                        <td class="govuk-table__cell" scope="row">{{name.DomainName | lower}}</td>
                         <td class="govuk-table__cell gc-text-right" scope="row">{{status}}</td>
                     </tr>
                     {% endfor %}

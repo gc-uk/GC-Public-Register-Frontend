@@ -13,11 +13,6 @@ gc-header-hero
 {% endblock %}
 
 {% block heroContent %}
-
-
-
-
-
 {% endblock %}
 
 {% block beforeContent %}
@@ -26,31 +21,23 @@ gc-header-hero
 
 {% block content %}
 
-
 <div class="govuk-grid-row">
     <div class="govuk-grid-column-two-thirds">
-
         <h1 class="govuk-heading-l">
             Download the register of gambling licensed premises
         </h1>
-
-
         <div class="govuk-inset-text">
             <p class="govuk-body govuk-!-font-weight-bold">
-                <a href="/registers/business/downloadfile">Gambling-premises-register.xlsx</a>
+                <a href="/public/gambling-premises-register.xlsx"  ga-on="click"
+                ga-event-category="Download" ga-event-action="click"
+                ga-event-label="Premises register">Gambling-premises-register.xlsx</a>
             </p>
-            <p class="govuk-body-s govuk-!-margin-bottom-1">File size [x]mb</p>
-            <p class="govuk-body-s">Last updated {{lastupdated | date('DD MMMM YYYY')}}</p>
+            <p class="govuk-body-s govuk-!-margin-bottom-1">File size: {{fileSizeInMegabytes}}{{mborkb}}</p>
+            <p class="govuk-body-s govuk-!-margin-bottom-1">Last updated: {{ctime | date('DD MMMM YYYY')}}</p>
+            <p class="govuk-body-s">Format: Excel</p>
         </div>
-
-        <p class="govuk-body">This file is the Excel format as the register contains datasets over multiple sheets.</p>
-
         <p class="govuk-body">You should be able to open this in most spreadsheet applications.</p>
-
-
     </div>
-
 </div>
-
 
 {% endblock %}

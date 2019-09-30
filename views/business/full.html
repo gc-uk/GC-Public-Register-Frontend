@@ -32,16 +32,16 @@ Full register of gambling businesses
         <h1 class="govuk-heading-l">Full register of gambling businesses</h1>
 
         <div class="gc-search gc-search--whitebg">
-            <form method="POST" action="search">
-                <label for="search" class="govuk-label">
+            <form method="get" action="results">
+                <label for="business-search" class="govuk-label">
                     <p id="search-hint" class="govuk-body">
-                        Search by business, trading or domain name, or account number
+                            Search by business name, trading name, domain name or account number
                     </p>
                 </label>
 
                 <div class="inner-form govuk-!-margin-bottom-3">
                     <div class="input-field second-wrap">
-                        <input id="search" name="search" type="text" placeholder="Search">
+                        <input id="business-search" name="business-search" type="text" placeholder="Search">
                     </div>
                     <div class="input-field third-wrap">
                         <button class="btn-search" type="submit"><span class="govuk-visually-hidden">Search the gambling
@@ -71,7 +71,7 @@ Full register of gambling businesses
 
     <div class="govuk-grid-column-one-third">
 
-        <form method="POST" action="full">
+        <form method="get" action="results">
 
 
             <div class="gc-filters">

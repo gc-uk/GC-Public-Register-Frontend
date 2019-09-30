@@ -90,7 +90,6 @@ gc-header-hero
                         <div class="gc-promo__content">
                             <h3 class="govuk-heading-s govuk-!-margin-bottom-2">Download the register</h3>
                             <p class="gc-promo__description">Compatible with spreadsheet applications</p>
-                            <p class="gc-promo__description">File size [x]mb</p>
                         </div>
                     </a>
                 </div>
@@ -105,53 +104,99 @@ gc-header-hero
         <p class="govuk-body">Last updated: {{registerData.lastupdated | date('DD MMMM YYYY')}}</p>
 
         <p class="govuk-body">There are <span class="govuk-!-font-weight-bold">{{registerData.NumberOfPremisesRecords  | numeral("0,0")}}</span>
-            records and <b>3 fields</b>
+            records and <b>9 fields</b>
             in this register.</p>
 
-        <table class="gc-table">
-            <caption class="gc-table__caption">
-                <p class="govuk-body">The <b>3 fields</b> in this register</p>
-            </caption>
-            <thead class="gc-table__head">
-                <tr class="gc-table__row">
-                    <th class="gc-table__header" scope="col">
-                        <p class="govuk-body">Field name</p>
-                    </th>
-                    <th class="gc-table__header " scope="col">
-                        <p class="govuk-body">Field description</p>
-                    </th>
-                </tr>
-            </thead>
-            <tbody class="gc-table__body">
-                <tr class="gc-table__row">
-                    <td class="gc-table__cell">
-                        <p class=" govuk-body"><b>Address</b></p>
-                    </td>
-                    <td class="gc-table__cell">
-                        <p class=" govuk-body">The address of the premises</p>
-                    </td>
-                </tr>
-
-                <tr class="gc-table__row">
-                        <td class="gc-table__cell">
-                            <p class=" govuk-body"><b>Licensing authority</b></p>
-                        </td>
-                        <td class="gc-table__cell">
-                            <p class=" govuk-body">The authority responsible for the premises licence</p>
-                        </td>
-                    </tr>
-
-                    <tr class="gc-table__row">
+            <table class="gc-table">
+                    <caption class="gc-table__caption">
+                        <p class="govuk-body">The fields in this register</p>
+                    </caption>
+                    <thead class="gc-table__head">
+                        <tr class="gc-table__row">
+                            <th class="gc-table__header" scope="col">
+                                Field
+                            </th>
+                            <th class="gc-table__header " scope="col">
+                                Description
+                            </th>
+                        </tr>
+                    </thead>
+                    <tbody class="gc-table__body">
+                        <tr class="gc-table__row">
                             <td class="gc-table__cell">
-                                <p class=" govuk-body"><b>Licensee</b></p>
+                               Row ID
                             </td>
                             <td class="gc-table__cell">
-                                <p class=" govuk-body">The business responsible for this premises</p>
+                               Unique Identifier for the entry
                             </td>
                         </tr>
-
-            </tbody>
-        </table>
+                        <tr class="gc-table__row">
+                            <td class="gc-table__cell">
+                                Account number
+                            </td>
+                            <td class="gc-table__cell">
+                                The unique reference number of the licensee
+                            </td>
+                        </tr>
+        
+                        <tr class="gc-table__row">
+                            <td class="gc-table__cell">
+                                Account name
+                            </td>
+                            <td class="gc-table__cell">
+                                    The name of the business who operates the premises
+                            </td>
+                        </tr>
+                        <tr class="gc-table__row">
+                            <td class="gc-table__cell">
+                                Premises Activity
+                            </td>
+                            <td class="gc-table__cell">
+                                The type of gambling run from the premises
+                            </td>
+                        </tr>
+                        <tr class="gc-table__row">
+                            <td class="gc-table__cell">
+                                Local authority
+                            </td>
+                            <td class="gc-table__cell">
+                                The local authority responsible for licensing the premises
+                            </td>
+                        </tr>
+                        <tr class="gc-table__row">
+                            <td class="gc-table__cell">
+                                Address line 1
+                            </td>
+                            <td class="gc-table__cell">
+                                First line of the address for the premises
+                            </td>
+                        </tr>
+                        <tr class="gc-table__row">
+                            <td class="gc-table__cell">
+                                    Address line 2
+                            </td>
+                            <td class="gc-table__cell">
+                               The second line of the address for the premises
+                            </td>
+                        </tr>
+                        <tr class="gc-table__row">
+                            <td class="gc-table__cell">
+                                City
+                            </td>
+                            <td class="gc-table__cell">
+                                The town or city the premises is located
+                            </td>
+                        </tr>
+                        <tr class="gc-table__row">
+                            <td class="gc-table__cell">
+                                Postcode
+                            </td>
+                            <td class="gc-table__cell">
+                                The postcode of the address for the premises 
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
 
 
 

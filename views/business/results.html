@@ -23,7 +23,7 @@ View and filter the full register of gambling businesses
 {% endblock %}
 
 {% block content %}
-
+  <form method="get" action="results">
 <div class="govuk-grid-row">
 
 
@@ -31,14 +31,12 @@ View and filter the full register of gambling businesses
 
         <h1 class="govuk-heading-l">Business register search results</h1>
 
-        <div class="gc-search gc-search--whitebg">
-            <form method="get" action="results">
+        <div class="gc-search gc-search--whitebg">          
                 <label for="search" class="govuk-label">
                     <p id="search-hint" class="govuk-body">
-                        Search by business, trading or domain name, or account number
+                            Search by business name, trading name, domain name or account number
                     </p>
                 </label>
-
                 <div class="inner-form govuk-!-margin-bottom-3">
                     <div class="input-field second-wrap">
                         <input id="search" name="business-search" type="text" placeholder="Search"
@@ -56,7 +54,7 @@ View and filter the full register of gambling businesses
                         </button>
                     </div>
                 </div>
-            </form>
+           
 
 
         </div>
@@ -72,7 +70,7 @@ View and filter the full register of gambling businesses
 
     <div class="govuk-grid-column-one-third">
 
-        <form method="POST" action="full">
+      
 
 
             <div class="gc-filters">
@@ -89,55 +87,55 @@ View and filter the full register of gambling businesses
                         <div class="govuk-checkboxes govuk-checkboxes--small">
                             <div class="govuk-checkboxes__item">
                                 <input class="govuk-checkboxes__input" id="sector-1" name="sector" type="checkbox"
-                                    value="Arcades">
+                                    value="Arcades" {{ checked("sector", "Arcades") }}>
                                 <label class="govuk-label govuk-checkboxes__label" for="sector-1">
                                     Arcades
                                 </label> </div>
                             <div class="govuk-checkboxes__item">
                                 <input class="govuk-checkboxes__input" id="sector-2" name="sector" type="checkbox"
-                                    value="Betting">
+                                    value="Betting" {{ checked("sector", "Betting") }}>
                                 <label class="govuk-label govuk-checkboxes__label" for="sector-2">
                                     Betting
                                 </label> </div>
                             <div class="govuk-checkboxes__item">
                                 <input class="govuk-checkboxes__input" id="sector-3" name="sector" type="checkbox"
-                                    value="Bingo">
+                                    value="Bingo" {{ checked("sector", "Bingo") }}>
                                 <label class="govuk-label govuk-checkboxes__label" for="sector-3">
                                     Bingo
                                 </label> </div>
                             <div class="govuk-checkboxes__item">
                                 <input class="govuk-checkboxes__input" id="sector-4" name="sector" type="checkbox"
-                                    value="Casino">
+                                    value="Casino" {{ checked("sector", "Casino") }}>
                                 <label class="govuk-label govuk-checkboxes__label" for="sector-4">
                                     Casino
                                 </label> </div>
                             <div class="govuk-checkboxes__item">
                                 <input class="govuk-checkboxes__input" id="sector-5" name="sector" type="checkbox"
-                                    value="Gambling software">
+                                    value="Gambling software" {{ checked("sector", "Gambling software") }}>
                                 <label class="govuk-label govuk-checkboxes__label" for="sector-5">
                                     Gambling software
                                 </label> </div>
                             <div class="govuk-checkboxes__item">
                                 <input class="govuk-checkboxes__input" id="sector-6" name="sector" type="checkbox"
-                                    value="Gaming machine">
+                                    value="Gaming machine" {{ checked("sector", "Gaming machine") }}>
                                 <label class="govuk-label govuk-checkboxes__label" for="sector-6">
                                     Gaming machine
                                 </label> </div>
                             <div class="govuk-checkboxes__item">
                                 <input class="govuk-checkboxes__input" id="sector-7" name="sector" type="checkbox"
-                                    value="Lotteries">
+                                    value="Lotteries" {{ checked("sector", "Lotteries") }}>
                                 <label class="govuk-label govuk-checkboxes__label" for="sector-7">
                                     Lotteries
                                 </label> </div>
                             <div class="govuk-checkboxes__item">
                                 <input class="govuk-checkboxes__input" id="sector-8" name="sector" type="checkbox"
-                                    value="Remote">
+                                    value="Remote" {{ checked("sector", "Remote") }}>
                                 <label class="govuk-label govuk-checkboxes__label" for="sector-8">
                                     Remote
                                 </label> </div>
                             <div class="govuk-checkboxes__item">
                                 <input class="govuk-checkboxes__input" id="sector-9" name="sector" type="checkbox"
-                                    value="Non-remote">
+                                    value="Non-remote" {{ checked("sector", "Non-remote") }}>
                                 <label class="govuk-label govuk-checkboxes__label" for="sector-9">
                                     Non-remote
                                 </label> </div>
@@ -153,7 +151,7 @@ View and filter the full register of gambling businesses
             </div>
 
 
-        </form>
+      
 
     </div>
 
@@ -167,13 +165,15 @@ View and filter the full register of gambling businesses
         <hr class="govuk-section-break govuk-!-margin-bottom-4 govuk-!-margin-top-1 govuk-section-break--visible">
         {% for i in registerData.accounts.recordset %}
 
+      
+
         <div class="gc-search-result">
             <span class="govuk-visually-hidden">Record {{loop.index}} of
                 {{registerData.accounts.recordset.length}}</span>
             <p class="govuk-heading-m govuk-!-margin-bottom-2">
-                <a href="/business/detail/{{i.accountnumber}}" ga-on="click" ga-event-category="OLSearch"
+                <a href="/business/detail/{{i.accountnumber}}" ga-on="click" ga-event-category="Business Search"
                     ga-event-action="Click"
-                    ga-event-label="{{ loop.index }}¬{{ loop.length }}¬{{i.accountnumber}}¬{{data['business-search']}}">{{i.accountname}}</a>
+                    ga-event-label="{{ loop.index }}¬{{ loop.length }}¬{{i.accountnumber}} {{i.accountname}}¬{{data['business-search']}}">{{i.accountname}}</a>
             </p>
             <h3 class="govuk-body-s govuk-!-font-weight-bold govuk-!-margin-bottom-1 govuk-!-margin-top-3">Account
                 number
@@ -233,5 +233,5 @@ View and filter the full register of gambling businesses
 
 </div>
 
-
+ </form>
 {% endblock %}

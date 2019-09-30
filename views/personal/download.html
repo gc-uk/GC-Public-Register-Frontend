@@ -40,20 +40,16 @@ gc-header-hero
 
 
         <div class="govuk-inset-text">
-            <p class="govuk-body govuk-!-font-weight-bold">
-                <a href="/personal/downloadfile">Personal-licence-register.xlsx</a>
-            </p>
-            <p class="govuk-body-s govuk-!-margin-bottom-1">File size [x]mb</p>
-            <p class="govuk-body-s">Last updated {{lastupdated | date('DD MMMM YYYY')}}</p>
-        </div>
-
-
-        <p class="govuk-body">This file is an Excel spreadsheet as the register contains information over multiple
-                sheets.</p>
-    
+                <p class="govuk-body govuk-!-font-weight-bold">
+                    <a href="/public/personal-licence-register.xlsx"  ga-on="click"
+                    ga-event-category="Download" ga-event-action="click"
+                    ga-event-label="Personal register">personal-licence-register.xlsx</a>
+                </p>
+                <p class="govuk-body-s govuk-!-margin-bottom-1">File size: {{fileSizeInMegabytes}}{{mborkb}}</p>
+                <p class="govuk-body-s govuk-!-margin-bottom-1">Last updated: {{ctime | date('DD MMMM YYYY')}}</p>
+                <p class="govuk-body-s">Format: Excel</p>
+            </div>
             <p class="govuk-body">You should be able to open this in most spreadsheet applications.</p>
-
-
     </div>
 
 </div>

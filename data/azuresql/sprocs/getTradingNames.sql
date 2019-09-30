@@ -1,6 +1,7 @@
 USE [publicregisters]
 GO
 
+/****** Object:  StoredProcedure [dbo].[GetTradingNames]    Script Date: 30/09/2019 15:15:59 ******/
 SET ANSI_NULLS ON
 GO
 

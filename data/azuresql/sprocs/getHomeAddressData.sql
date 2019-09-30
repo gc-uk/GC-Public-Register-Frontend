@@ -1,7 +1,7 @@
 USE [publicregisters]
 GO
 
-/****** Object:  StoredProcedure [dbo].[GetLicences]    Script Date: 30/09/2019 15:15:10 ******/
+/****** Object:  StoredProcedure [dbo].[GetHomeAddressData]    Script Date: 30/09/2019 15:14:34 ******/
 SET ANSI_NULLS ON
 GO
 
@@ -9,21 +9,23 @@ SET QUOTED_IDENTIFIER ON
 GO
 
 
+
 -- =============================================
 -- Author:		Andy Williams-Jones
 -- Create date: 26 September 2019
--- Description:	Get licences
+-- Description:	Get Business
 -- =============================================
-CREATE PROCEDURE [dbo].[GetLicences] 
+CREATE PROCEDURE [dbo].[GetHomeAddressData] 
 	@query int
 AS
 BEGIN
 	SET NOCOUNT ON;
-	SELECT * from view_publicregister_licences as ac	
+	SELECT * from view_publicregister_addresses as ac	
 	where ac.accountnumber = @query
-	order by [status]
+	and AddressType = 'Home'
 	
 END
+
 
 
 GO

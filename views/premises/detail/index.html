@@ -35,8 +35,11 @@ Premises
   <div class="govuk-grid-column-one-half">
 
    
+  <p class="govuk-heading-s govuk-!-margin-bottom-0">
+            Address
+          </p>
 
-    <p class="govuk-body">
+      
       <address>
           {{registerData.Premises.recordset[0].AddressLine1}}<br>
           {% if registerData.Premises.recordset[0].AddressLine2 !== null%}
@@ -45,7 +48,7 @@ Premises
           {{registerData.Premises.recordset[0].City}}<br>
           {{registerData.Premises.recordset[0].Postcode}}
       </address>
-    </p>
+
 
   
 
