@@ -75,23 +75,11 @@ exports.redirectForActivity_get = function (req, res) {
         })
 }
 
-exports.daily_get = function (req, res) {
-
-        const fullPremisesRegisterData = require('../data/azuresql/getFullPremisesRegister');
-        let premises = fullPremisesRegisterData();
-
-        const fullPersonalRegister = require('../data/azuresql/getFullPersonalRegister');
-        let personal = fullPersonalRegister();
-
+exports.dlBusiness_get = function (req, res) {
 
         const allTradingAndDomainNames = require('../data/azuresql/getAllTradingAndDomainNames');
         let allNames = allTradingAndDomainNames();
 
-
-
-        // Create the business register dataset
-
-        var businessRegisterData = "";
         var allNameData = "";
 
         console.log('start')
@@ -164,7 +152,6 @@ exports.daily_get = function (req, res) {
                         sheet1.addRow(data);
                 })
 
-
                 console.log('populate trading name sheet')
 
                 allNameData.tradingNames.recordset.forEach(function (data) {
@@ -177,10 +164,7 @@ exports.daily_get = function (req, res) {
                         sheet3.addRow(data);
                 })
 
-
-           
-
-                businessExcel.xlsx.writeFile("../public/business-licence-register.xlsx").then(function () {
+                businessExcel.xlsx.writeFile("./public/business-licence-register.xlsx").then(function () {
                         console.log('business register generated')
                 }).catch(err => {
                         console.log(err);
@@ -190,11 +174,13 @@ exports.daily_get = function (req, res) {
                 console.log(err);
         });
 
+        res.render("index");
+}
 
+exports.dlPersonal_get = function (req, res) {
 
-
-
-        // Create the personal register dataset
+        const fullPersonalRegister = require('../data/azuresql/getFullPersonalRegister');
+        let personal = fullPersonalRegister();
 
         var personalRegisterData = "";
 
@@ -251,18 +237,21 @@ exports.daily_get = function (req, res) {
                         sheet1.addRow(data);
                 })
 
-                personalExcel.xlsx.writeFile("../public/personal-licence-register.xlsx").then(function () {
-                        console.log('personal register generated')
+                personalExcel.xlsx.writeFile("./public/personal-licence-register.xlsx").then(function () {
+                        console.log('Files generated')
                 });
 
         }).catch(err => {
                 console.log(err);
         });
 
+        res.render("index");
+}
 
+exports.dlPremises_get = function (req, res) {
 
-
-        // Create the premises register dataset
+        const fullPremisesRegisterData = require('../data/azuresql/getFullPremisesRegister');
+        let premises = fullPremisesRegisterData();
 
         var premisesRegisterData = "";
 
@@ -318,15 +307,14 @@ exports.daily_get = function (req, res) {
                         sheet1.addRow(data);
                 })
 
-                premisesExcel.xlsx.writeFile("../public/gambling-premises-register.xlsx").then(function () {
-                        console.log('premises register generated')
+                premisesExcel.xlsx.writeFile("./public/gambling-premises-register.xlsx").then(function () {
+                        console.log('Files generated')
                 });
 
 
         }).catch(err => {
                 console.log(err);
         });
-
 
         res.render("index");
 }
