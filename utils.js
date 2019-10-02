@@ -106,3 +106,4 @@ exports.getFullURL = function (req, res, next) {
     pathname: req.originalUrl
   });
 }
+

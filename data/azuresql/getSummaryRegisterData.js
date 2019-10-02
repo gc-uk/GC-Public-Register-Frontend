@@ -1,18 +1,30 @@
 var config = require('./config');
 const sql = require('mssql');
+var cache = require('memory-cache');
 
 
 async function getSummaryRegisterData(query) {
-    sql.close()
-    let sqlResult = {};
-    await sql.connect(config)
 
-    let q = getData();
+    if (cache.get('getSummaryRegisterData') !== null) {
+        return cache.get('getSummaryRegisterData')
 
-    sqlResult['summaryRegisterData'] = await q;
+    } else {
 
-    sql.close()
-    return sqlResult;
+        sql.close()
+        let sqlResult = {};
+        await sql.connect(config)
+
+        let q = getData();
+
+        sqlResult['summaryRegisterData'] = await q;        
+        sqlResult['cachedTime'] = new Date();
+
+        sql.close()
+
+        cache.put('getSummaryRegisterData', sqlResult, process.env.cachelimit);
+        return sqlResult;
+
+    }
 }
 
 async function getData() {

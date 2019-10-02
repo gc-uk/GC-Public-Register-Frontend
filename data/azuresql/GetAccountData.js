@@ -1,8 +1,15 @@
 var config = require('./config');
 const sql = require('mssql');
+var cache = require('memory-cache');
 
 
 async function getBusinessData(query) {
+
+    if (cache.get('getBusinessData-'+query) !== null) {
+        console.log('From cache')
+        return cache.get('getBusinessData-'+query)
+
+    } else {
     sql.close()
     let sqlResult = {};
     await sql.connect(config)
@@ -18,7 +25,9 @@ async function getBusinessData(query) {
     sqlResult['licenceActivities'] = await d;
 
     sql.close()
+    cache.put('getBusinessData-'+query, sqlResult, process.env.cachelimit);
     return sqlResult;
+    }
 }
 
 async function getData(query) {

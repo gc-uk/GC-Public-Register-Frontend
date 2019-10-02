@@ -11,9 +11,11 @@ exports.home_get = function (req, res) {
         var registerData = "";
         summaryRegisterData.then(result => {
                 registerData = result.summaryRegisterData.recordset[0];
+                var cachedTime = result.cachedTime
                 res.render("index", {
                         currentURL,
-                        registerData
+                        registerData,
+                        cachedTime
                 });
         }).catch(err => {
                 console.log(err);

@@ -46,6 +46,7 @@ exports.business_details_get = function (req, res) {
             }
 
         }).catch(err => {
+            console.log(err)
             res.redirect('/')
         });
     }
