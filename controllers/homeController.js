@@ -178,7 +178,7 @@ exports.daily_get = function (req, res) {
                 })
 
 
-                console.log(__dirname);
+           
 
                 businessExcel.xlsx.writeFile("../public/business-licence-register.xlsx").then(function () {
                         console.log('business register generated')
@@ -189,9 +189,6 @@ exports.daily_get = function (req, res) {
         }).catch(err => {
                 console.log(err);
         });
-
-
-
 
 
 
@@ -255,7 +252,7 @@ exports.daily_get = function (req, res) {
                 })
 
                 personalExcel.xlsx.writeFile("../public/personal-licence-register.xlsx").then(function () {
-                        console.log('Files generated')
+                        console.log('personal register generated')
                 });
 
         }).catch(err => {
@@ -322,7 +319,7 @@ exports.daily_get = function (req, res) {
                 })
 
                 premisesExcel.xlsx.writeFile("../public/gambling-premises-register.xlsx").then(function () {
-                        console.log('Files generated')
+                        console.log('premises register generated')
                 });
 
 
