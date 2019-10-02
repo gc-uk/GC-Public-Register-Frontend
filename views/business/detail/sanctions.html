@@ -4,14 +4,14 @@
 {% set hoAddress = registerData.hoAddress.recordset[0] %}
 
 {% block pageTitle %}
-Domain names - {{account.AccountName}}
+Sanctions - {{account.AccountName}}
 {% endblock %}
 
 {% block pageDescription %}
-List of domain names for {{account.AccountName}}
+Regulatory sanctions taken by the Gambling Commission against {{account.AccountName}}
 {% endblock %}
 
-{% block ogTitle %}List of domain names for {{account.AccountName}}
+{% block ogTitle %}Regulatory sanctions taken by the Gambling Commission against {{account.AccountName}}
 {% endblock %}
 
 {% block heroClass %}
@@ -51,7 +51,7 @@ List of domain names for {{account.AccountName}}
                                 <a class="gc-vertical-nav__link "
                                     href="/business/detail/trading-names/{{account.AccountNumber}}">Trading names</a>
                             </li>
-                            <li class="gc-vertical-nav__section-item gc-vertical-nav__section-item--current">
+                            <li class="gc-vertical-nav__section-item">
                                 <span class="gc-vertical-nav--count">{{account.DomainNameCount}}</span>
                                 <a class="gc-vertical-nav__link "
                                     href="/business/detail/domain-names/{{account.AccountNumber}}">Domain names</a>
@@ -62,7 +62,6 @@ List of domain names for {{account.AccountName}}
                                 <a class="gc-vertical-nav__link "
                                     href="/business/detail/premises/{{account.AccountNumber}}">Premises</a>
                             </li>
-                           
                             
                             <li class="gc-vertical-nav__section-item">
                                 <span class="gc-vertical-nav--count">{{account.ActionsCount| numeral("0,0")}}</span>
@@ -70,7 +69,7 @@ List of domain names for {{account.AccountName}}
                                 href="/business/detail/settlements/{{account.AccountNumber}}">Settlements</a>
                             </li>
                               
-                            <li class="gc-vertical-nav__section-item">
+                            <li class="gc-vertical-nav__section-item   gc-vertical-nav__section-item--current">
                                 <span class="gc-vertical-nav--count">{{account.SanctionsCount| numeral("0,0")}}</span>
                                 <a class="gc-vertical-nav__link "
                                     href="/business/detail/sanctions/{{account.AccountNumber}}">Sanctions</a>
@@ -82,48 +81,34 @@ List of domain names for {{account.AccountName}}
         <div class="app-pane__content">
 
             <h2 class="govuk-heading-m">
-                Domain names
+                Regulatory sanctions
             </h2>
 
+            <p>When a licence holder has not followed rules and regulations aimed at ensuring gambling is fair,
+                safe and crime-free, we can take action and impose the following sanctions:
+            </p>
 
+            <ul class="govuk-list govuk-list--bullet">
+                <li>Give the licensee a warning</li>
+                <li>Add, remove, or amend a condition to the licence</li>
+                <li>Suspend a licence</li>
+                <li>Revoke a licence</li>
+                <li>Impose a financial penalty</li>
+            </ul>
     
-            {% if registerData.domainNames.recordset.length === 0 %}
+            {% if registerData.actions.recordset.length === 0 %}
 
             <div class="govuk-inset-text govuk-!-margin-top-0">
-                <p class="govuk-body">No domain names for this business</p>
+                <p class="govuk-body">No regulatory sanctions have been recorded for this business.</p>
             </div>
             {% endif %}
     
     
-            {% for status, i in registerData.domainNames.recordset | groupby ('Status') %}
-            {% if status === 'White Label' %}
-           <h3 class="govuk-heading-m">White label</h3>
-           
-            <p class="govuk-body">A white label website is designed to look and feel like a company or brand but the
-                contents and services provided on the website are operated and managed by another company. </p>
-            <p class="govuk-body">You can find out more about <a
-                    href="https://www.gamblingcommission.gov.uk/for-gambling-businesses/Compliance/Sector-specific-compliance/Remote-and-software/White-label-gambling-websites.aspx"
-                    target="_blank" rel="noopener">white label gambling websites</a> on the Gambling Commission website.</p>
-            {% endif %}
-    
-    
-            <table class="govuk-table">
-    
-                <thead class="govuk-table__head">
-                    <tr class="govuk-table__row">
-                        <th class="govuk-table__header" scope="col">Name</th>
-                        <th class="govuk-table__header gc-text-right" scope="col">Status</th>
-                    </tr>
-                </thead>
-                <tbody class="govuk-table__body  govuk-body-s">
-                    {% for name in i %}
-                    <tr class="govuk-table__row">
-                        <td class="govuk-table__cell" scope="row">{{name.DomainName | lower}}</td>
-                        <td class="govuk-table__cell gc-text-right" scope="row">{{status}}</td>
-                    </tr>
-                    {% endfor %}
-                </tbody>
-            </table>
+            {% for  i in registerData.actions.recordset %}
+         
+            <div class="govuk-inset-text">
+                {{ i.Details | safe}}
+            </div>                 
     
             {% endfor %}
 

@@ -59,6 +59,17 @@ Licences and activities held by {{account.AccountName}}
                         <a class="gc-vertical-nav__link "
                             href="/business/detail/premises/{{account.AccountNumber}}">Premises</a>
                     </li>
+                    <li class="gc-vertical-nav__section-item">
+                        <span class="gc-vertical-nav--count">{{account.ActionsCount| numeral("0,0")}}</span>
+                        <a class="gc-vertical-nav__link "
+                        href="/business/detail/settlements/{{account.AccountNumber}}">Settlements</a>
+                    </li>
+                      
+                    <li class="gc-vertical-nav__section-item">
+                        <span class="gc-vertical-nav--count">{{account.SanctionsCount| numeral("0,0")}}</span>
+                        <a class="gc-vertical-nav__link "
+                            href="/business/detail/sanctions/{{account.AccountNumber}}">Sanctions</a>
+                    </li>
                 </ul>
             </nav>
         </div>

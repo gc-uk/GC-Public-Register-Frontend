@@ -269,3 +269,65 @@ exports.business_full_get = function (req, res) {
     });
 
 }
+
+exports.business_settlements_get = function (req, res) {
+
+    currentURL = utils.getFullURL(req)
+    var query = req.params.id;
+
+    if (isNaN(query)) {
+        res.redirect('/')
+    } else {
+
+        const accountData = require('../data/azuresql/getBusinessActions');
+        let data = accountData(query);
+        var registerData = "";
+
+        data.then(result => {
+            if (result.account.recordset.length === 0) {
+                res.redirect('/')
+            } else {
+                registerData = result;
+                res.render("business/detail/settlements", {
+                    businessactive,
+                    registerData
+                });
+            }
+
+        }).catch(err => {
+            console.log(err)
+            res.redirect('/')
+        });
+    }
+}
+
+exports.business_sanctions_get = function (req, res) {
+
+    currentURL = utils.getFullURL(req)
+    var query = req.params.id;
+
+    if (isNaN(query)) {
+        res.redirect('/')
+    } else {
+
+        const accountData = require('../data/azuresql/getBusinessSanctions');
+        let data = accountData(query);
+        var registerData = "";
+
+        data.then(result => {
+            if (result.account.recordset.length === 0) {
+                res.redirect('/')
+            } else {
+                registerData = result;
+                res.render("business/detail/sanctions", {
+                    businessactive,
+                    registerData
+                });
+            }
+
+        }).catch(err => {
+            console.log(err)
+            res.redirect('/')
+        });
+    }
+}

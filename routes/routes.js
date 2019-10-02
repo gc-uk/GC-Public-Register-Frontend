@@ -30,6 +30,8 @@ router.get('/business/full', businessController.business_full_get);
 router.get('/business/detail/trading-names/:id', businessController.business_tradingnames_get);
 router.get('/business/detail/domain-names/:id', businessController.business_domainnames_get);
 router.get('/business/detail/premises/:id', businessController.business_premises_get);
+router.get('/business/detail/settlements/:id', businessController.business_settlements_get);
+router.get('/business/detail/sanctions/:id', businessController.business_sanctions_get);
 // Posts
 router.post('/business/search', businessController.business_search_post);
 
