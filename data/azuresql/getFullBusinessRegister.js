@@ -24,7 +24,7 @@ async function getFullBusinessRegister() {
 
     sql.close();
 
-    cache.put('getFullBusinessRegister', sqlResult, process.env.cachelimit);
+    cache.put('getFullBusinessRegister', sqlResult, 6000);
     return sqlResult;
     }
 

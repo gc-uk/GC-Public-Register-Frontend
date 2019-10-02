@@ -25,7 +25,7 @@ async function getBusinessData(query) {
     sqlResult['licenceActivities'] = await d;
 
     sql.close()
-    cache.put('getBusinessData-'+query, sqlResult, process.env.cachelimit);
+    cache.put('getBusinessData-'+query, sqlResult, 6000);
     return sqlResult;
     }
 }

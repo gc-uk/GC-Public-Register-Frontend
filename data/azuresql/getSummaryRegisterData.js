@@ -21,7 +21,7 @@ async function getSummaryRegisterData(query) {
 
         sql.close()
 
-        cache.put('getSummaryRegisterData', sqlResult, process.env.cachelimit);
+        cache.put('getSummaryRegisterData', sqlResult, 6000);
         return sqlResult;
 
     }
