@@ -21,8 +21,6 @@ router.get('/dlBusiness', homeController.dlBusiness_get);
 router.get('/dlPremises', homeController.dlPremises_get);
 router.get('/dlPersonal', homeController.dlPersonal_get);
 
-
-
 // BUSINESS
 // Gets
 router.get('/business/', businessController.business_home_get);
@@ -30,6 +28,7 @@ router.get('/business/detail/:id', businessController.business_details_get);
 router.get('/business/download', businessController.business_download_get);
 router.get('/business/results', businessController.business_results_get);
 router.get('/business/full', businessController.business_full_get);
+router.get('/business/full/:page', businessController.business_full_get);
 router.get('/business/detail/trading-names/:id', businessController.business_tradingnames_get);
 router.get('/business/detail/domain-names/:id', businessController.business_domainnames_get);
 router.get('/business/detail/premises/:id', businessController.business_premises_get);
@@ -37,6 +36,7 @@ router.get('/business/detail/settlements/:id', businessController.business_settl
 router.get('/business/detail/sanctions/:id', businessController.business_sanctions_get);
 // Posts
 router.post('/business/search', businessController.business_search_post);
+router.post('/business/filter', businessController.business_filter_post);
 
 // PERSONAL
 // Gets
@@ -63,6 +63,5 @@ router.post('/premises/search', premisesController.premises_search_post);
 router.get('/test-houses/', datasetsController.datasets_testhouse_get);
 router.get('/drop-and-win/', datasetsController.datasets_dropandwin_get);
 router.get('/regulatory-actions/', datasetsController.datasets_regulatoryactions_get);
-
 
 module.exports = router

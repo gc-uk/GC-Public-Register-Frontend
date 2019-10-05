@@ -2,43 +2,68 @@ var config = require('./config');
 const sql = require('mssql');
 var cache = require('memory-cache');
 
+async function getFullBusinessRegister(offset, fetch, order, hasFilters, filter) {
 
-async function getFullBusinessRegister() {
-
-    if (cache.get('getFullBusinessRegister') !== null) {
-        console.log('From cache')
-        return cache.get('getFullBusinessRegister')
-
-    } else {
-    sql.close()
-
-    
-    console.log('From database')
-    
+    sql.close();
     let sqlResult = {};
     await sql.connect(config);
 
-    let a = getData();
+    let a = getData(offset, fetch, order, hasFilters, filter);
+    let b = getTotal(hasFilters,filter);
 
     sqlResult['accounts'] = await a;
+    sqlResult['total'] = await b;
 
     sql.close();
 
-    cache.put('getFullBusinessRegister', sqlResult, 6000);
     return sqlResult;
-    }
-
 }
 
-async function getData() {
-    try {
-        return await sql.query("EXEC GetFullBusinessRegister");
-    } catch (err) {
-        console.log(err);
+async function getTotal(hasFilters,filter) {
+    if (hasFilters === true) {
+        try {
+            return await sql.query("EXEC GetCountFullBusinessRegister @filter = '" + filter + "'");
+        } catch (err) {
+            console.log(err);
+        }
+    } else {
+        try {
+            return await sql.query("EXEC GetCountFullBusinessRegisterNoPage");
+        } catch (err) {
+            console.log(err);
+        }
     }
-
 }
 
+async function getData(offset, fetch, order, hasFilters, filter) {
 
+    console.log("offset: "+ offset)
+    console.log("fetch: " + fetch)
+    console.log("order: "+ order)
+    console.log("order: "+ hasFilters)
+    console.log("filter: "+ filter)
+
+    if (hasFilters === true) {
+
+        // filter query
+        console.log('filter query')
+        try {
+            return await sql.query("EXEC GetFullBusinessRegister @offset =" + offset + ", @fetch = " + fetch + ", @order = " + order + ", @hasFilters = '" + hasFilters + "', @filter = '" + filter + "'");
+        } catch (err) {
+            console.log(err);
+        }
+    } else {
+        console.log('non filter query')
+        try {
+            return await sql.query("EXEC GetFullBusinessRegisterNoFilter @offset =" + offset + ", @fetch = " + fetch);
+        } catch (err) {
+            console.log(err);
+        }
+    }
+
+
+
+
+}
 
 module.exports = getFullBusinessRegister;
