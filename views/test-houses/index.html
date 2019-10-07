@@ -5,7 +5,8 @@ Test house dataset
 {% endblock %}
 
 {% block pageDescription %}
-Test house dataset which details the organisations which are approved by the Gambling Commission to test compliance against technical standards and requirements.
+Test house dataset which details the organisations which are approved by the Gambling Commission to test compliance
+against technical standards and requirements.
 {% endblock %}
 
 {% block heroClass %}
@@ -34,86 +35,230 @@ Test house dataset which details the organisations which are approved by the Gam
             Test house dataset
         </h1>
 
-        <p class="govuk-body">We publish a list of approved test houses that are approved to test compliance against our technical standards and requirements including:
-           </p>
-          <ul class="govuk-list govuk-list--bullet">
-              <li><a href="http://www.gamblingcommission.gov.uk/for-gambling-businesses/Compliance/Sector-specific-compliance/Arcades-and-machines/Gaming-machine-technical-standards.aspx" target="_blank" rel="noopener">gaming machines technical standards</a></li>
-              <li><a href="http://www.gamblingcommission.gov.uk/for-gambling-businesses/Compliance/Sector-specific-compliance/Remote-and-software/Remote-gambling-and-software-technical-standards.aspx" target="_blank" rel="noopener">remote gambling and software technical standards</a></li>
-              <li><a href="http://www.gamblingcommission.gov.uk/for-gambling-businesses/Compliance/Sector-specific-compliance/Bingo/Bingo-and-casino-technical-requirements.aspx" target="_blank" rel="noopener">bingo and casino technical requirements</a></li>
-          </ul> 
-       
+        <p class="govuk-body">We publish a list of approved test houses that are approved to test compliance against our
+            technical standards and requirements including:
+        </p>
+        <ul class="govuk-list">
+            <li><a  class="govuk-link" href="http://www.gamblingcommission.gov.uk/for-gambling-businesses/Compliance/Sector-specific-compliance/Arcades-and-machines/Gaming-machine-technical-standards.aspx"
+                    target="_blank" rel="noopener">gaming machines technical standards</a></li>
+            <li><a  class="govuk-link" href="http://www.gamblingcommission.gov.uk/for-gambling-businesses/Compliance/Sector-specific-compliance/Remote-and-software/Remote-gambling-and-software-technical-standards.aspx"
+                    target="_blank" rel="noopener">remote gambling and software technical standards</a></li>
+            <li><a class="govuk-link" href="http://www.gamblingcommission.gov.uk/for-gambling-businesses/Compliance/Sector-specific-compliance/Bingo/Bingo-and-casino-technical-requirements.aspx"
+                    target="_blank" rel="noopener">bingo and casino technical requirements</a></li>
+        </ul>
+
 
         <h2 class="govuk-heading-m">
-                Download the dataset
-            </h2>
+            Download the dataset
+        </h2>
         <div class="govuk-inset-text">
-                <p class="govuk-body govuk-!-font-weight-bold">
-                    <a href="/test-house/downloadfile">test-house.xlsx</a>
-                </p>
-                <p class="govuk-body-s govuk-!-margin-bottom-1">File size [x]mb</p>
-                <p class="govuk-body-s">Last updated {{lastupdated | date('DD MMMM YYYY')}}</p>
-            </div>
+            <p class="govuk-body govuk-!-font-weight-bold">
+                <a href="/public/test-houses.xlsx">test-house.xlsx</a>
+            </p>
+            <p class="govuk-body-s govuk-!-margin-bottom-1">File size: 10kb</p>
+            <p class="govuk-body-s  govuk-!-margin-bottom-1">Last updated: {{'2019-10-07' | date('DD MMMM YYYY')}}</p>
+            <p class="govuk-body-s">Format: Excel</p>
+        </div>
+        <p class="govuk-body">You should be able to open this in most spreadsheet applications.</p>
 
-            
-    <p class="govuk-body-s">This file is the Excel format as the register contains datasets over multiple sheets.</p>
 
-    <p class="govuk-body-s">You should be able to open this in most spreadsheet applications.</p>
-     
 
         <h2 class="govuk-heading-m">
-                Test houses dataset
-            </h2>
-    
-            <table class="gc-table">
-                    <caption class="gc-table__caption">
-                        <p class="govuk-body">18 test houses</p>
-                    </caption>
-                    <thead class="gc-table__head">
-                        <tr class="gc-table__row">
-                            <th class="gc-table__header" scope="col">
-                               Test house name
-                            </th>
-                            <th class="gc-table__header " scope="col">
-                               Website
-                            </th>
-                            <th class="gc-table__header " scope="col">
-                                    Remote
-                                </th>                              
-                        </tr>
-                    </thead>
-                    <tbody class="gc-table__body">
-                        <tr class="gc-table__row">
-                            <td class="gc-table__cell">
-                               eCOGRA
-                            </td>
-                            <td class="gc-table__cell">
-                              <a href="https://www.ecogra.org/" target="_blank" rel="noopener">eCOGRA</a>
-                            </td>
-                            <td class="gc-table__cell">
-                                    
-                                </td>
-                        </tr>                     
-                    </tbody>
-                </table>
-        
+            Test houses dataset.
+        </h2>
 
-    </div>
-
-    <div class="govuk-grid-column-one-third">
-            <div class="govuk-inset-text">
-                    <p class="govuk-body govuk-!-font-weight-bold">
-                        <a href="/test-house/downloadfile">test-house.xlsx</a>
-                    </p>
-                    <p class="govuk-body-s govuk-!-margin-bottom-1">File size [x]mb</p>
-                    <p class="govuk-body-s">Last updated {{lastupdated | date('DD MMMM YYYY')}}</p>
-                </div>
-
+        <table class="gc-table">
+            <caption class="gc-table__caption">
+                <p class="govuk-body">15 test houses. All links open in a new window.</p>
+            </caption>
+            <thead class="gc-table__head">
+                <tr class="gc-table__row">
+                    <th class="gc-table__header" scope="col">
+                        Test house
+                    </th>
+                    <th class="gc-table__header " scope="col">
+                        Website
+                    </th>
+                    <th class="gc-table__header " scope="col">
+                        Category
+                    </th>
+                </tr>
+            </thead>
+            <tbody class="gc-table__body">
+                <tr class="gc-table__row">
+                    <td class="gc-table__cell">
+                        BMM Testlabs (South Africa)
+                    </td>
+                    <td class="gc-table__cell">
+                        <a href="http://www.bmm.com/" target="_blank" rel="noopener">www.bmm.com</a>
+                    </td>
+                    <td class="gc-table__cell">
+                        All
+                    </td>
+                </tr>
+                <tr class="gc-table__row">
+                    <td class="gc-table__cell">
+                        BMM Spain Testlabs SL
+                    </td>
+                    <td class="gc-table__cell">
+                        <a href="http://www.bmm.com/" target="_blank" rel="noopener">www.bmm.com</a>
+                    </td>
+                    <td class="gc-table__cell">
+                        All
+                    </td>
+                </tr>
+                <tr class="gc-table__row">
+                    <td class="gc-table__cell">
+                        eCOGRA
+                    </td>
+                    <td class="gc-table__cell">
+                        <a href="http://www.ecogra.org/" target="_blank" rel="noopener">www.ecogra.org</a>
+                    </td>
+                    <td class="gc-table__cell">
+                        None
+                    </td>
+                </tr>
+                <tr class="gc-table__row">
+                    <td class="gc-table__cell">
+                        Expleo Technology UK Limited
+                    </td>
+                    <td class="gc-table__cell">
+                        <a href="http://www.expleogroup.com/" target="_blank" rel="noopener">www.expleogroup.com</a>
+                    </td>
+                    <td class="gc-table__cell">
+                        None
+                    </td>
+                </tr>
+                <tr class="gc-table__row">
+                    <td class="gc-table__cell">
+                        Gaming Associates Europe Ltd
+                    </td>
+                    <td class="gc-table__cell">
+                        <a href="http://www.gamingassociates.eu/" target="_blank"
+                            rel="noopener">www.gamingassociates.eu</a>
+                    </td>
+                    <td class="gc-table__cell">
+                        None
+                    </td>
+                </tr>
+                <tr class="gc-table__row">
+                    <td class="gc-table__cell">
+                        Gaming Laboratories International LLC
+                    </td>
+                    <td class="gc-table__cell">
+                        <a href="http://www.gaminglabs.com/" target="_blank" rel="noopener">www.gaminglabs.com</a>
+                    </td>
+                    <td class="gc-table__cell">
+                        All
+                    </td>
+                </tr>
+                <tr class="gc-table__row">
+                    <td class="gc-table__cell">
+                        GLI Europe BV
+                    </td>
+                    <td class="gc-table__cell">
+                        <a href="http://www.gaminglabs.com/" target="_blank" rel="noopener">www.gaminglabs.com</a>
+                    </td>
+                    <td class="gc-table__cell">
+                        All
+                    </td>
+                </tr>
+                <tr class="gc-table__row">
+                    <td class="gc-table__cell">
+                        GLI Austria GmbH
+                    </td>
+                    <td class="gc-table__cell">
+                        <a href="http://www.gaminglabs.com/" target="_blank" rel="noopener">www.gaminglabs.com</a>
+                    </td>
+                    <td class="gc-table__cell">
+                        All
+                    </td>
+                </tr>
+                <tr class="gc-table__row">
+                    <td class="gc-table__cell">
+                        GLI Test Labs Canada ULC
+                    </td>
+                    <td class="gc-table__cell">
+                        <a href="http://www.gaminglabs.com/" target="_blank" rel="noopener">www.gaminglabs.com</a>
+                    </td>
+                    <td class="gc-table__cell">
+                        All
+                    </td>
+                </tr>
+                <tr class="gc-table__row">
+                    <td class="gc-table__cell">
+                        GLI UK Gaming Limited [2]
+                    </td>
+                    <td class="gc-table__cell">
+                        <a href="http://www.gaminglabs.com/" target="_blank" rel="noopener">www.gaminglabs.com</a>
+                    </td>
+                    <td class="gc-table__cell">
+                        All
+                    </td>
+                </tr>
+                <tr class="gc-table__row">
+                    <td class="gc-table__cell">
+                        iTech Global Pty Limited (iTech Labs)
+                    </td>
+                    <td class="gc-table__cell">
+                        <a href="http://www.itechlabs.com/" target="_blank" rel="noopener">www.itechlabs.com</a>
+                    </td>
+                    <td class="gc-table__cell">
+                        None
+                    </td>
+                </tr>
+                <tr class="gc-table__row">
+                    <td class="gc-table__cell">
+                        QALabs PTY Limited
+                    </td>
+                    <td class="gc-table__cell">
+                        <a href="http://www.qalab.com.au/" target="_blank" rel="noopener">www.qalab.com.au</a>
+                    </td>
+                    <td class="gc-table__cell">
+                        All (excluding compensated gaming machines)
+                    </td>
+                </tr>
                 
-        <p class="govuk-body-s">This file is the Excel format as the register contains datasets over multiple sheets.</p>
+                <tr class="gc-table__row">
+                        <td class="gc-table__cell">
+                                Quinel M. Ltd
+                        </td>
+                        <td class="gc-table__cell">
+                            <a href="http://www.quinel.com.mt/" target="_blank" rel="noopener">www.quinel.com.mt</a>
+                        </td>
+                        <td class="gc-table__cell">
+                            None
+                        </td>
+                    </tr>
+                    <tr class="gc-table__row">
+                            <td class="gc-table__cell">
+                                    Slovenian Institute of Quality and Metrology (SIQ)
+                            </td>
+                            <td class="gc-table__cell">
+                                <a href="http://www.siq.si" target="_blank" rel="noopener">www.siq.si</a>
+                            </td>
+                            <td class="gc-table__cell">
+                                All
+                            </td>
+                        </tr>
+                        <tr class="gc-table__row">
+                                <td class="gc-table__cell">
+                                        Trisigma B.V.
+                                </td>
+                                <td class="gc-table__cell">
+                                    <a href="http://www.trisigma.nl/" target="_blank" rel="noopener">www.trisigma.nl</a>
+                                </td>
+                                <td class="gc-table__cell">
+                                    All
+                                </td>
+                            </tr>
+            </tbody>
+        </table>
 
-        <p class="govuk-body-s">You should be able to open this in most spreadsheet applications.</p>
 
     </div>
+
+   
 
 </div>
 
