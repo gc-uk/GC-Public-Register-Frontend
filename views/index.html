@@ -27,7 +27,7 @@ gc-header-hero
           premises.</p>
         <p class="govuk-body govuk-!-margin-bottom-6">You can search, view and download this information as well as view
           datasets of other Gambling Commission information.</p>
-          
+
       </div>
     </div>
   </div>
@@ -40,66 +40,76 @@ gc-header-hero
 <div class="govuk-grid-row">
   <div class="govuk-grid-column-two-thirds">
     <h2 class="govuk-heading-m">Registers</h2>
-    <div class="govuk-grid-row gc-promo-group">
-      <div class="govuk-grid-column-one-half gc-promo-group__item">
-        <div class="gc-promo app-promo--grey">
-          <a class="gc-promo__link-wrapper" href="/business/">
-            <div class="gc-promo__content">
+
+    <div class="govuk-grid-row gc-card-group">
+      <div class="govuk-grid-column-one-half gc-card-group__item">
+        <div class="gc-card">
+          <a class="gc-card__link-wrapper" href="/business/">
+            <div class="gc-card__content">
               <h3 class="govuk-heading-s govuk-!-margin-bottom-2">Gambling businesses</h3>
-              <p class="gc-promo__description">Search or download information about gambling businesses</p>
-              <p class="gc-promo__description">{{registerData.NumberOfOperatorRecords  | numeral("0,0")}} records</p>
+              <p class="gc-card__description">Search or download information about gambling businesses</p>
+              <p class="gc-card__description">
+                {{registerData.NumberOfOperatorRecords  | numeral("0,0")}} records</p>
             </div>
           </a>
         </div>
       </div>
-      <div class="govuk-grid-column-one-half gc-promo-group__item">
-        <div class="gc-promo app-promo--grey">
-          <a class="gc-promo__link-wrapper" href="/personal/">
-            <div class="gc-promo__content">
-              <h2 class="govuk-heading-s govuk-!-margin-bottom-2">Personal licences</h2>
-              <p class="gc-promo__description">Search or download information about licensed individuals</p>
-              <p class="gc-promo__description">{{registerData.NumberOfIndividualRecords  | numeral("0,0")}} records</p>
+      <div class="govuk-grid-column-one-half gc-card-group__item">
+        <div class="gc-card">
+          <a class="gc-card__link-wrapper" href="/personal/">
+            <div class="gc-card__content">
+              <h3 class="govuk-heading-s govuk-!-margin-bottom-2">Personal licences</h3>
+              <p class="gc-card__description">Search or download information about licensed individuals</p>
+              <p class="gc-card__description">
+                {{registerData.NumberOfIndividualRecords  | numeral("0,0")}} records</p>
             </div>
           </a>
         </div>
       </div>
-      <div class="govuk-grid-column-one-half gc-promo-group__item">
-        <div class="gc-promo app-promo--grey">
-          <a class="gc-promo__link-wrapper" href="/premises/">
-            <div class="gc-promo__content">
+      <div class="govuk-grid-column-one-half gc-card-group__item">
+        <div class="gc-card">
+          <a class="gc-card__link-wrapper" href="/premises/">
+            <div class="gc-card__content">
               <h3 class="govuk-heading-s govuk-!-margin-bottom-2">Premises</h3>
-              <p class="gc-promo__description">Search or download information about premises licensed for gambling</p>
-              <p class="gc-promo__description">{{registerData.NumberOfPremisesRecords  | numeral("0,0")}} records</p>
+              <p class="gc-card__description">Search or download information about premises licensed for gambling</p>
+              <p class="gc-card__description">
+                {{registerData.NumberOfPremisesRecords  | numeral("0,0")}} records</p>
             </div>
           </a>
         </div>
       </div>
     </div>
+
+
     <h2 class="govuk-heading-m" id="datasets">Datasets</h2>
-    <div class="govuk-grid-row gc-promo-group">
-      <div class="govuk-grid-column-one-half gc-promo-group__item ">
-        <div class="gc-promo app-promo--grey">
-          <a class="gc-promo__link-wrapper" href="/regulatory-actions/">
-            <div class="gc-promo__content">
+
+
+
+    <div class="govuk-grid-row gc-card-group">
+      <div class="govuk-grid-column-one-half gc-card-group__item">
+        <div class="gc-card">
+          <a class="gc-card__link-wrapper" href="/regulatory-actions/">
+            <div class="gc-card__content">
               <h3 class="govuk-heading-s govuk-!-margin-bottom-2">Regulatory actions</h3>
-              <p class="gc-promo__description">View details of regulatory action taken against businesses and
+              <p class="gc-card__description">View details of regulatory action taken against businesses and
                 individuals</p>
+
             </div>
           </a>
         </div>
       </div>
-      <div class="govuk-grid-column-one-half gc-promo-group__item ">
-        <div class="gc-promo app-promo--grey">
-          <a class="gc-promo__link-wrapper" href="/test-houses/">
-            <div class="gc-promo__content">
+      <div class="govuk-grid-column-one-half gc-card-group__item">
+        <div class="gc-card">
+          <a class="gc-card__link-wrapper" href="/test-houses/">
+            <div class="gc-card__content">
               <h3 class="govuk-heading-s govuk-!-margin-bottom-2">Test houses</h3>
-              <p class="gc-promo__description">View or download information about Gambling Commission approved test
+              <p class="gc-card__description">View or download information about Gambling Commission approved test
                 houses</p>
+
             </div>
           </a>
         </div>
       </div>
-     
     </div>
   </div>
   <div class="govuk-grid-column-one-third">

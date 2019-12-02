@@ -73,32 +73,34 @@ gc-header-hero
 <div class="govuk-grid-row">
     <div class="govuk-grid-column-full">
 
-        <div class="govuk-grid-row gc-promo-group">
-            <div class="govuk-grid-column-one-third gc-promo-group__item">
-                <div class="gc-promo app-promo--grey">
-                    <a class="gc-promo__link-wrapper" href="/business/full/1">
-                        <div class="gc-promo__content">
+
+        <div class="govuk-grid-row gc-card-group">
+            <div class="govuk-grid-column-one-half gc-card-group__item">
+                <div class="gc-card">
+                    <a class="gc-card__link-wrapper" href="/business/full/1">
+                        <div class="gc-card__content">
                             <h3 class="govuk-heading-s govuk-!-margin-bottom-2">View the full register</h3>
-                            <p class="gc-promo__description">View and filter the full gambling business register</p>
-                            <p class="gc-promo__description">{{registerData.NumberOfOperatorRecords  | numeral("0,0")}}
-                                records</p>
+                            <p class="gc-card__description">View and filter the full gambling business register</p>
+                            <p class="gc-card__description">
+                                {{registerData.NumberOfOperatorRecords  | numeral("0,0")}} records</p>
                         </div>
                     </a>
                 </div>
             </div>
-
-            <div class="govuk-grid-column-one-third gc-promo-group__item">
-                <div class="gc-promo app-promo--grey">
-                    <a class="gc-promo__link-wrapper" href="/business/download">
-
-                        <div class="gc-promo__content">
+            <div class="govuk-grid-column-one-half gc-card-group__item">
+                <div class="gc-card">
+                    <a class="gc-card__link-wrapper" href="/business/download">
+                        <div class="gc-card__content">
                             <h3 class="govuk-heading-s govuk-!-margin-bottom-2">Download the register</h3>
-                            <p class="gc-promo__description">Compatible with spreadsheet applications</p>
+                            <p class="gc-card__description">Compatible with spreadsheet applications</p>
+
                         </div>
                     </a>
                 </div>
             </div>
         </div>
+
+
 
 
         <hr class="govuk-section-break govuk-section-break--m govuk-section-break--visible">

@@ -61,6 +61,7 @@ exports.redirectForActivity_get = function (req, res) {
         // Get the id
         var activity = req.params.id;
 
+        
         // Get the config
         const d = require('../data/activity.json');
 
