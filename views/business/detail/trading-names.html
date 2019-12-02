@@ -72,9 +72,9 @@ List of trading names for {{account.AccountName}}
                 Trading names
             </h2>
             {% if registerData.tradingNames.recordset.length === 0 %}
-            <div class="govuk-inset-text  govuk-!-margin-top-0">
+          
                 <p class="govuk-body">No trading names for this business</p>
-            </div>
+            
             {% endif %}
             {% for status, i in registerData.tradingNames.recordset | groupby ('Status') %}
             <table class="govuk-table">

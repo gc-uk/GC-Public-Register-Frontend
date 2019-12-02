@@ -85,15 +85,9 @@ List of domain names for {{account.AccountName}}
                 Domain names
             </h2>
 
-
-
             {% if registerData.domainNames.recordset.length === 0 %}
-
-            <div class="govuk-inset-text govuk-!-margin-top-0">
-                <p class="govuk-body">No domain names for this business</p>
-            </div>
+            <p class="govuk-body">No domain names for this business</p>
             {% endif %}
-
 
             {% for status, i in registerData.domainNames.recordset | groupby ('Status') %}
             {% if status === 'White Label' %}
@@ -106,7 +100,6 @@ List of domain names for {{account.AccountName}}
                     target="_blank" rel="noopener">white label gambling websites</a> on the Gambling Commission website.
             </p>
             {% endif %}
-
 
             <table class="govuk-table">
 
@@ -127,9 +120,6 @@ List of domain names for {{account.AccountName}}
             </table>
 
             {% endfor %}
-
-
-
 
         </div>
 
