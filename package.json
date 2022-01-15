@@ -22,7 +22,7 @@
     "express-session": "^1.16.2",
     "jade": "~1.11.0",
     "keypather": "^3.1.0",
-    "marked": "^0.7.0",
+    "marked": "^4.0.10",
     "memory-cache": "^0.2.0",
     "morgan": "^1.9.1",
     "mssql": "^5.1.0",
